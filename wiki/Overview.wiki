@@ -15,10 +15,10 @@ Notification component providing:
  * Thorough customizable logging
  * Extension support
 
-===EventArgs===
+===!EventArgs===
 generic event arguments
 
-===EventFilter===
+===!EventFilter===
 event filter to aggregate and delay frequently occurring events (e.g. file changes)
 
 == State Machine ==
