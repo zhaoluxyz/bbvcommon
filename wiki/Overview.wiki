@@ -21,7 +21,7 @@ generic event arguments
 ===!EventFilter===
 event filter to aggregate and delay frequently occurring events (e.g. file changes)
 
-== State Machine ==
+== StateMachine ==
 hierarchical state machine
  *  value type based (enums, ints, ...) resulting in single class state machines.
  * actions
