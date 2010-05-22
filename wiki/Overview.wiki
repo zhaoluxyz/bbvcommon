@@ -3,9 +3,9 @@
 
 bbv.Common consists of several mostly independent components developed at [http://www.bbv.ch bbv Software Services AG]:
 
-== Event Notification ==
+= Event Notification =
 
-===EventBroker===
+==EventBroker==
 Notification component providing:
  * Synchronous and asynchronous notification
  * Automatic thread switching: to background or UI thread
@@ -16,13 +16,13 @@ Notification component providing:
  * Thorough customizable logging
  * Extension support
 
-===!EventArgs===
+==!EventArgs==
 generic event arguments
 
-===!EventFilter===
+==!EventFilter==
 event filter to aggregate and delay frequently occurring events (e.g. file changes)
 
-== StateMachine ==
+= StateMachine =
 hierarchical state machine
  *  value type based (enums, ints, ...) resulting in single class state machines.
  * actions
@@ -38,27 +38,27 @@ hierarchical state machine
  * configurable thorough logging simplifies debugging using log4net
  * state machine report for textual description of state machine
 
-== Asynchronous Operations ==
+= Asynchronous Operations =
 
-===!AsyncResult===
+==!AsyncResult==
 implementation for IAsyncResult to execute asynchonous operations
 
-===!AsyncWorker===
+==!AsyncWorker==
 extends BackgroundWorker with exception handling that does not swallow exception and simpler usage within code.
 
-===!AsyncModules===
+==!AsyncModules==
 The AsyncModule components provide an easy way to a multithreaded application. Arbitrary objects (so called modules) can be extended with one or more worker threads and message queues to perform asynchronous tasks:
  * Any object can be extended to build an asynchronous task executor
  * Message queue (note: not MS message queue) based communication that supports queuing messages last or first in queue
  * thorough logging
  * Extension support
 
-===!UserInterfaceThreadSynchronizer===
+==!UserInterfaceThreadSynchronizer==
 simple to use thread switcher to execute operations synchronously or asynchronously on user interface thread (WinForms, WPF and ASP.NET)
 
-== Rule Evaluation ==
+= Rule Evaluation =
 
-===!RuleEngine===
+==!RuleEngine==
 foundation for evaluating rules:
  * Single entry point for checking rules
   The rule engine provides a single entry point (method RuleEngine.Validate) to all invokers (an invoker is a client starting the validation process).
@@ -69,79 +69,79 @@ foundation for evaluating rules:
   Rules providers (IRulesProvider – are responsible of returning rules matching a rule set descriptor) can be defined per context.
   A central RulesProviderFinder (known by the rule engine) is responsible of accessing the rules providers matching the current context.
 
-== Test Utilities ==
+= Test Utilities =
 
-===!EventTester / EventTestList===
+==!EventTester / EventTestList==
 simplifies testing of event invocations (automatic registration and deregistration, invocation count test, ...)
 
-===!Log4NetHelper===
+==!Log4NetHelper==
 test log messages
 
-===!TemporaryFileHolder===
+==!TemporaryFileHolder==
 manages temporarily needed files (automatic deletion)
 
-== Data Handling ==
+= Data Handling =
 
-===!CsvParser / Writer===
+==!CsvParser / Writer==
 Parser and Writer for .csv (comma separated values) files.
 
-== File System ==
+= File System =
 
-===!FileActionCommand===
+==!FileActionCommand==
 Execute commands recursively on the file system:
  * Get all files
  * Move files
  * Number of folders and files
  * Extensible with custom commands
 
-===!FileSystemHelper / !DriveUtilities===
+==!FileSystemHelper / !DriveUtilities==
 Provides information about the file system and drives
 
-== Miscellaneous ==
+= Miscellaneous =
 
-===!ApplicationHelper===
+==!ApplicationHelper==
 Provides functionality to check whether application is already running and optionally switch to running instance
 
-===!HighResolutionStopWatch===
+==!HighResolutionStopWatch==
 StopWatch that uses processor ticks for high resolution timing
 
-===!FormatHelper===
+==!FormatHelper==
 String.Format replacement that does not crash if too few arguments are defined but returns an error string.
 
-===!StringTruncationFormatter===
+==!StringTruncationFormatter==
 Format provider for formatting string with a maximal length.
 
-===!StreamHelper===
+==!StreamHelper==
 Provides functionality for manipulating streams (copy and compare)
 
-===!StreamLoggerStream / !StreamDecoratorStream===
+==!StreamLoggerStream / !StreamDecoratorStream==
 stream decorators for logging or generic use
 
-===!TextFileReader / !TextFileWriter===
+==!TextFileReader / !TextFileWriter==
 wrapper for files access to enable unit testing
 
-===Resources===
+==Resources==
 resource loaders to load data from file system or embedded resources
 
-===Security===
+==Security==
 Provides MD5 and SHA1 hashing
 
-===!WindowsHelper===
+==!WindowsHelper==
 Provides shutdown and logoff functionality.
 
-== ASP.NET ==
+= ASP.NET =
 
-===Caching===
+==Caching==
 Provides centralized access to the ASP.Net Cache. 
 
 The default caching behaviour is to cache the data for the duration of the page request. It is possible to set the duration of caching in the configuration file. The key in the configuration file has to match the main key under which the object is stored in the cache.
 
 To distinguish between different cached objects of the same main key, a subkey can be defined. That means the main key is used to define the duration of the caching and the combination of the main and subkey is used to identify the object in the cache.
 
-===Exceptions===
+==Exceptions==
 Provides components for simple exception handling and visualization
 
-===UI===
+==UI==
 Helper components for ASP.NET user interface interaction
  * GridViewSortExtender 
   Adds an image to the sort column indicating sort direction.
