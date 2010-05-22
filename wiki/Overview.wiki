@@ -1,6 +1,6 @@
 #summary Overview
 
-bbv.Common consists of several mostly independent components:
+bbv.Common consists of several mostly independent components developed at [http://www.bbv.ch bbv Software Services AG]:
 
 == Event Notification ==
 
