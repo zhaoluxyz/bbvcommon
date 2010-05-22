@@ -1,0 +1,8 @@
+#summary Describes the special behaviour of the active state machine.
+#labels StateMachine
+
+The `ActiveStateMachine` is a state machine that has its own worker thread on which the transitions are performed.
+The program flow returns to the caller of the state machine immediately after the event was queued.
+
+== Events ==
+The state machine fires the events on its worker thread.
