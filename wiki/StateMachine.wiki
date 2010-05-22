@@ -1,0 +1,38 @@
+#summary Overview of the bbv.Common.StateMachine
+#labels Featured,StateMachine
+
+== Features ==
+  * value type based (enums, ints, ...) resulting in single class state machines.
+  * actions
+    * on transitions
+    * entry and exit actions
+  * transaction guards
+  * hierarchical
+    * different history behaviours to initialize state always to same state or last active state
+  * fluent definition interface
+  * synchronous/asynchronous state machine
+    * passive state machine handles state transitions synchronuously
+    * active state machine handles state transitions asynchronously on the worker thread of the state machine
+  * configurable thorough logging simplifies debugging using log4net
+  * state machine report for textual description of state machine
+
+== Documentation ==
+[StateMachineTutorial Tutorial]
+
+[StateMachineGeneral General]
+
+[PassiveStateMachine Passive State Machine]
+
+[ActiveStateMachine Active State Machine]
+
+[UnitTestStateMachine Unit Test State Machine]
+
+[StateMachineHierarchicalTransactions Hierarchical Transactions]
+
+[StateMachineExceptionHandling Exception Handling]
+
+[StateMachineLogging Logging]
+
+[StateMachineReport Report]
+
+[StateMachineSample Complete Sample State Machine]
