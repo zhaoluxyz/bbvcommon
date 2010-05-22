@@ -1,0 +1,8 @@
+#summary Sponsors of bbv.Common.
+
+The bbv.Common project is sponsored by
+
+*[http://www.bbv.ch bbv Software Services AG]* 
+
+
+Thanks for the support!
