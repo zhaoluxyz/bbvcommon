@@ -1,0 +1,14 @@
+#summary Describes the state machine report.
+#labels StateMachine
+
+You can request a report of the state machine. 
+
+This report contains:
+  * state machine name
+  * initial state
+  * all states, with initial sub states, history mode and whether they have entry- and exit-actions
+  * all transitions per state, with information whether they have a guard and how many actions are defined.
+
+You can use this report to check your implementation.
+
+See [StateMachineSample Sample] for a sample report.
