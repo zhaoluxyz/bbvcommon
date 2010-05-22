@@ -1,0 +1,16 @@
+#summary Summary of bbv.Common.EventBroker
+#labels EventBroker,Featured
+
+== Features ==
+  * Synchronous and asynchronous notification
+  * Automatic thread switching: to background or UI thread
+  * Loose coupling of event topic publishers and subscribers
+  * Publishers and subscribers are referenced by weak references. Therefore they can be garbage collected
+  * Multiple publishers and/or subscribers for a single event topic
+  * Matchers for publications and subscriptions
+  * Thorough customizable logging
+  * Extension support 
+
+== Documentation ==
+
+[Event Broker Tutorial|Tutorial]
