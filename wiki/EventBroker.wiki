@@ -13,4 +13,4 @@
 
 == Documentation ==
 
-[Event Broker Tutorial|Tutorial]
+[EventBrokerTutorial Tutorial]
