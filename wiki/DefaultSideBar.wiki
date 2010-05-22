@@ -2,3 +2,4 @@
   * Components
     * EventBroker
     * StateMachine
+  * [Sponsors]
