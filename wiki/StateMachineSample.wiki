@@ -75,8 +75,6 @@ elevator.Stop();
 
 == Log ==
 
-_Deprecated: logging has changed (only how a logger is defined, output remains the same)_
-
 If the above code is run then these are the log messages (if all are enabled - see log4net documentation on how to configure log messages).
 
 Note how the state exits and enters are logged, especially for hierarchical transitions.
