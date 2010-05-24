@@ -123,7 +123,7 @@ wrapper for files access to enable unit testing
 ==Resources==
 resource loaders to load data from file system or embedded resources
 
-==Security==
+==[Security]==
 Provides MD5 and SHA1 hashing
 
 ==!WindowsHelper==
