@@ -1,6 +1,7 @@
   * [Overview]
   * Components
-    * EventBroker
-    * StateMachine
-    * AsyncModule
+    * [EventBroker Event Broker
+    * [StateMachine Hierarchical State Machine]
+    * [AsyncModule Asynchrous Modules]
+    * [HashService Hash Service]
   * [Sponsors]
