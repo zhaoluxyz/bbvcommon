@@ -67,7 +67,7 @@ To compare a generated hash value from a specified input to an existing hash val
 service.CompareHash(reader, “1CB251EC0D568dE6A929B520C4AED8D1”);
 }}}
  
-=Define Custom HashAlgorithm=
+=Define Custom Hash Algorithm=
 To define a custom HashAlgorithm, you have to create a class which implements the `IHashAlgorithm` interface.
 Custom hash algorithm class:
 
