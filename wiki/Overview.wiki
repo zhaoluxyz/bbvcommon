@@ -46,7 +46,7 @@ implementation for IAsyncResult to execute asynchonous operations
 ==!AsyncWorker==
 extends BackgroundWorker with exception handling that does not swallow exception and simpler usage within code.
 
-==!AsyncModules==
+==AsyncModule==
 The AsyncModule components provide an easy way to a multithreaded application. Arbitrary objects (so called modules) can be extended with one or more worker threads and message queues to perform asynchronous tasks:
  * Any object can be extended to build an asynchronous task executor
  * Message queue (note: not MS message queue) based communication that supports queuing messages last or first in queue
