@@ -11,6 +11,8 @@
   * Thorough customizable logging
   * Extension support 
 
+[http://bbvcommon.googlecode.com/svn/wikiFiles/EventBroker/EventBroker.png]
+
 == Documentation ==
 
 [EventBrokerTutorial Tutorial]
