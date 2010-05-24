@@ -3,7 +3,7 @@
 
 This is a sample state machine
 
-_add image here_
+[http://bbvcommon.googlecode.com/svn/wikiFiles/StateMachine/ElevatorStateMachine.gif]
 
 == Definition ==
 
