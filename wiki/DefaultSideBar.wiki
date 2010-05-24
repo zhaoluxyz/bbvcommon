@@ -2,4 +2,5 @@
   * Components
     * EventBroker
     * StateMachine
+    * AsyncModule
   * [Sponsors]
