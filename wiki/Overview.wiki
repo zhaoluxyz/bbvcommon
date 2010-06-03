@@ -3,6 +3,11 @@
 
 bbv.Common consists of several mostly independent components developed at [http://www.bbv.ch bbv Software Services AG]:
 
+The project is split into three sub-projects
+  * bbv.Common - the main components
+  * bbv.Common Contrib - new or contributed components
+  * bbv.Common Obsolete - old components not maintained actively anymore
+
 = bbv.Common =
 
 || *Events* ||
@@ -48,23 +53,16 @@ bbv.Common consists of several mostly independent components developed at [http:
 || HashService || Provides MD5 and SHA1 hashing. ||
 || !WindowsHelper || Provides shutdown and logoff functionality. ||
 
+= bbv.Common Contrib =
+
+to be released...
+
 = Obsolete Components =
 
-== ASP.NET ==
+Can be found on old source forge page. See link on sidebar of project overview...
 
-===Caching===
-Provides centralized access to the ASP.Net Cache. 
-
-The default caching behaviour is to cache the data for the duration of the page request. It is possible to set the duration of caching in the configuration file. The key in the configuration file has to match the main key under which the object is stored in the cache.
-
-To distinguish between different cached objects of the same main key, a subkey can be defined. That means the main key is used to define the duration of the caching and the combination of the main and subkey is used to identify the object in the cache.
-
-===Exceptions===
-Provides components for simple exception handling and visualization
-
-===UI===
-Helper components for ASP.NET user interface interaction
- * GridViewSortExtender 
-  Adds an image to the sort column indicating sort direction.
- * ControlHelper, DropDownListHelper, GridViewHelper, TextControlHelper 
-  Functionality to manipulate controls.
+|| *ASP.NET* ||
+|| Caching || Provides centralized access to the ASP.Net Cache with advanced configuration possibilities. ||
+|| Exceptions || Provides components for simple exception handling and visualization ||
+|| GridViewSortExtender || Adds an image to the sort column indicating sort direction. ||
+|| UI Helpers || ControlHelper, DropDownListHelper, GridViewHelper, TextControlHelper: functionality to manipulate controls strongly typed. ||
