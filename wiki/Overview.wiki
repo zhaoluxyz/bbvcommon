@@ -5,72 +5,50 @@ bbv.Common consists of several mostly independent components developed at [http:
 
 = bbv.Common =
 
+|| *Events* || ||
 || EventBroker || Notification component for synchronous and asynchronous loosly coupled notification with automatic thread switching ||
 || generic event arguments || ||
 || !EventFilter || event filter to aggregate and delay frequently occurring events (e.g. file changes) ||
+
+|| *State Machine* || ||
 || StateMachine || hierarchical state machine with fluent definition syntax ||
+
+|| *Asynchronous Operations* || ||
 || !AsyncResult || implementation for IAsyncResult to execute asynchonous operations ||
 || !AsyncWorker || extends BackgroundWorker with exception handling that does not swallow exception and simpler usage within code. ||
 || AsyncModule || Provide an easy way to a multithreaded application. Arbitrary objects can be extended with one or more worker threads and message queues to perform asynchronous tasks ||
 || !UserInterfaceThreadSynchronizer || simple to use thread switcher to execute operations synchronously or asynchronously on user interface thread (WinForms, WPF and ASP.NET) ||
+
+|| *Rule Engine* ||
 || !RuleEngine || foundation for evaluating rules: Single entry point for checking rules, Loosely coupled, Context based rule sets. ||
+
+|| *Test Utilities* || ||
 || !EventTester / EventTestList || simplifies testing of event invocations (automatic registration and deregistration, invocation count test, ...) ||
+|| !Log4NetHelper || test log messages ||
 
-==!Log4NetHelper==
-test log messages
+|| *csv* || ||
+|| !CsvParser / Writer || Parser and Writer for .csv (comma separated values) files. ||
 
-==!TemporaryFileHolder==
-manages temporarily needed files (automatic deletion)
+|| *IO* || ||
+|| !TextFileReader / !TextFileWriter || wrapper for files access to enable unit testing ||
+|| !TemporaryFileHolder || manages temporarily needed files (automatic deletion) ||
+|| !FileActionCommand || Execute commands recursively on the file system: Get all files, move files, number of folders and files, extensible with custom commands. ||
+|| !FileSystemHelper / !DriveUtilities || Provides information about the file system and drives |||
 
-= Data Handling =
+|| *Streams* || ||
+|| !StreamHelper || Provides functionality for manipulating streams (copy and compare). ||
+|| !StreamLoggerStream / !StreamDecoratorStream || stream decorators for logging or generic use. ||
 
-==!CsvParser / Writer==
-Parser and Writer for .csv (comma separated values) files.
+|| *Miscellaneous* || ||
+|| !ApplicationHelper || Provides functionality to check whether application is already running and optionally switch to running instance. ||
+|| !HighResolutionStopWatch || StopWatch that uses processor ticks for high resolution timing. ||
+|| !FormatHelper || String.Format replacement that does not crash if too few arguments are defined but returns an error string. ||
+|| !StringTruncationFormatter || Format provider for formatting string with a maximal length. |
+|| Resources || resource loaders to load data from file system or embedded resources ||
+|| HashService || Provides MD5 and SHA1 hashing. ||
+|| !WindowsHelper || Provides shutdown and logoff functionality. ||
 
-= File System =
-
-==!FileActionCommand==
-Execute commands recursively on the file system:
- * Get all files
- * Move files
- * Number of folders and files
- * Extensible with custom commands
-
-==!FileSystemHelper / !DriveUtilities==
-Provides information about the file system and drives
-
-= Miscellaneous =
-
-==!ApplicationHelper==
-Provides functionality to check whether application is already running and optionally switch to running instance
-
-==!HighResolutionStopWatch==
-StopWatch that uses processor ticks for high resolution timing
-
-==!FormatHelper==
-String.Format replacement that does not crash if too few arguments are defined but returns an error string.
-
-==!StringTruncationFormatter==
-Format provider for formatting string with a maximal length.
-
-==!StreamHelper==
-Provides functionality for manipulating streams (copy and compare)
-
-==!StreamLoggerStream / !StreamDecoratorStream==
-stream decorators for logging or generic use
-
-==!TextFileReader / !TextFileWriter==
-wrapper for files access to enable unit testing
-
-==Resources==
-resource loaders to load data from file system or embedded resources
-
-==HashService==
-Provides MD5 and SHA1 hashing.
-
-==!WindowsHelper==
-Provides shutdown and logoff functionality.
-
+= Obsolete Components =
 = ASP.NET =
 
 ==Caching==
