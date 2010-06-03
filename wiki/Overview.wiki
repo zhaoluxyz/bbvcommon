@@ -9,42 +9,12 @@ bbv.Common consists of several mostly independent components developed at [http:
 || generic event arguments || ||
 || !EventFilter || event filter to aggregate and delay frequently occurring events (e.g. file changes) ||
 || StateMachine || hierarchical state machine with fluent definition syntax ||
-
-= Asynchronous Operations =
-
-==!AsyncResult==
-implementation for IAsyncResult to execute asynchonous operations
-
-==!AsyncWorker==
-extends BackgroundWorker with exception handling that does not swallow exception and simpler usage within code.
-
-==AsyncModule==
-The AsyncModule components provide an easy way to a multithreaded application. Arbitrary objects (so called modules) can be extended with one or more worker threads and message queues to perform asynchronous tasks:
- * Any object can be extended to build an asynchronous task executor
- * Message queue (note: not MS message queue) based communication that supports queuing messages last or first in queue
- * thorough logging
- * Extension support
-
-==!UserInterfaceThreadSynchronizer==
-simple to use thread switcher to execute operations synchronously or asynchronously on user interface thread (WinForms, WPF and ASP.NET)
-
-= Rule Evaluation =
-
-==!RuleEngine==
-foundation for evaluating rules:
- * Single entry point for checking rules
-  The rule engine provides a single entry point (method RuleEngine.Validate) to all invokers (an invoker is a client starting the validation process).
- *	Loosely coupled
-  Invoker of rule checking does not need to know the rules. It only has to use a descriptor (IRuleSetDescriptor) describing the set of rules that has to be checked.
- *	Context based rule sets
-  A context is defined by a rule set descriptor (IRuleSetDescriptor).
-  Rules providers (IRulesProvider – are responsible of returning rules matching a rule set descriptor) can be defined per context.
-  A central RulesProviderFinder (known by the rule engine) is responsible of accessing the rules providers matching the current context.
-
-= Test Utilities =
-
-==!EventTester / EventTestList==
-simplifies testing of event invocations (automatic registration and deregistration, invocation count test, ...)
+|| !AsyncResult || implementation for IAsyncResult to execute asynchonous operations ||
+|| !AsyncWorker || extends BackgroundWorker with exception handling that does not swallow exception and simpler usage within code. ||
+|| AsyncModule || Provide an easy way to a multithreaded application. Arbitrary objects can be extended with one or more worker threads and message queues to perform asynchronous tasks ||
+|| !UserInterfaceThreadSynchronizer || simple to use thread switcher to execute operations synchronously or asynchronously on user interface thread (WinForms, WPF and ASP.NET) ||
+|| !RuleEngine || foundation for evaluating rules: Single entry point for checking rules, Loosely coupled, Context based rule sets. ||
+|| !EventTester / EventTestList || simplifies testing of event invocations (automatic registration and deregistration, invocation count test, ...) ||
 
 ==!Log4NetHelper==
 test log messages
