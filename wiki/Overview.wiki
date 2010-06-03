@@ -3,40 +3,12 @@
 
 bbv.Common consists of several mostly independent components developed at [http://www.bbv.ch bbv Software Services AG]:
 
-= Event Notification =
+= bbv.Common =
 
-==EventBroker==
-Notification component providing:
- * Synchronous and asynchronous notification
- * Automatic thread switching: to background or UI thread
- * Loose coupling of event topic publishers and subscribers
- * Publishers and subscribers are referenced by weak references. Therefore they can be garbage collected
- * Multiple publishers and/or subscribers for a single event topic
- * Matchers for publications and subscriptions
- * Thorough customizable logging
- * Extension support
-
-==!EventArgs==
-generic event arguments
-
-==!EventFilter==
-event filter to aggregate and delay frequently occurring events (e.g. file changes)
-
-= StateMachine =
-hierarchical state machine
- *  value type based (enums, ints, ...) resulting in single class state machines.
- * actions
-  *on transitions
-  *on entry and exit actions 
- * transaction guards
- * hierarchical
-  * different history behaviours to initialize state always to same state or last active state 
- * fluent definition interface
- * synchronous/asynchronous state machine
-  * passive state machine handles state transitions synchronuously
-  * active state machine handles state transitions asynchronously on the worker thread of the state machine 
- * configurable thorough logging simplifies debugging using log4net
- * state machine report for textual description of state machine
+|| EventBroker || Notification component for synchronous and asynchronous loosly coupled notification with automatic thread switching ||
+|| generic event arguments || ||
+|| !EventFilter || event filter to aggregate and delay frequently occurring events (e.g. file changes) ||
+|| StateMachine || hierarchical state machine with fluent definition syntax ||
 
 = Asynchronous Operations =
 
