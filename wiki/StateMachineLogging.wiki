@@ -19,4 +19,4 @@ stateMachine.AddExtension(new Log4NetExtension<States, Events>("my.logger.name")
 
 = custom logging =
 
-If you want to change either the logging framework or what and how is logged then you can write your own logging extension. See [Extenions] for information how to write an extension for the state machine.
+If you want to change either the logging framework or what and how is logged then you can write your own logging extension. See [StateMachineExtensions Extensions] for information how to write an extension for the state machine.
