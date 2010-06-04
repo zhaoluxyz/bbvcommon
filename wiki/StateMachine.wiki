@@ -31,6 +31,8 @@
 
 [StateMachineExceptionHandling Exception Handling]
 
+[StateMachineExtensions Extensions]
+
 [StateMachineLogging Logging]
 
 [StateMachineReport Report]
