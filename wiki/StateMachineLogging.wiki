@@ -3,7 +3,7 @@
 
 = log4net =
 
-There exists a Log4Net extension that provides logging using Log4Net.
+There exists a log4net extension that provides logging using log4net.
 
 You can add an instance of the `Log4NetExtension` to the state machine:
 
