@@ -5,8 +5,15 @@
 
 Extensions are used to change or access internals of the state machine. An example for an extension is the `Log4NetExtension` ([Logging]) which can be used for logging with log4net.
 
+= Changing the Behaviour of a State Machine =
 
-= Details =
+Extensions can change the behaviour of the state machine in these ways:
+  * change the state into which the state machine is initialized
+  * change the event and/or event arguments fired on the state machine
+  * change the exceptions thrown by the state machine with custom exceptions
+  * Firing events on the state machine as a reaction to a call on the extension (e.g. perform transition to the error state on an exception)
+
+= Interface =
 
 A state machine extension has to implement the following interface:
 
@@ -177,10 +184,4 @@ A state machine extension has to implement the following interface:
     }
 }}}
 
-= Changing the Behaviour of a State Machine =
-
-Extensions can change the behaviour of the state machine in these ways:
-  * change the state into which the state machine is initialized
-  * change the event and/or event arguments fired on the state machine
-  * change the exceptions thrown by the state machine with custom exceptions
-  * Firing events on the state machine as a reaction to a call on the extension (e.g. perform transition to the error state on an exception)
+You can use the `ExtensionBase` class in the namespace `bbv.Common.StateMachine.Extensions` to derive your extensions. The `ExtensionsBase` class implements all interface members with virtual methods.
