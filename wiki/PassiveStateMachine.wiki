@@ -7,4 +7,4 @@ The `PassiveStateMachine` is a state machine that performs transitions on the sa
 When a transition, exit or entry action fires an event on the state machine then this event is executed immediately after the initial event is processed and before the process flow is returned to the caller of the state machine.
 
 == State Machine Events ==
-All events of the state machine are fired on the same threead as the caller.
+All events of the state machine are fired on the same thread as the caller.
