@@ -1,4 +1,4 @@
-#summary Overview of the bbv.Common.StateMachine
+#summary Overview of the bbv.Common.StateMachine - a hierarchical state machine with fluent definition syntax
 #labels Featured,StateMachine
 
 == Features ==
