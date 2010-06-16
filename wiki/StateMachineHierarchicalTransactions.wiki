@@ -44,4 +44,14 @@ No states are left or entered when an internal transition is executed. An intern
 
 = Examples =
 
+Let's take a simple elevator state machine (see [StateMachineSample State Machine Sample] for the definition in code):
+
 [http://bbvcommon.googlecode.com/svn/wikiFiles/StateMachine/ElevatorStateMachine.gif]
+
+== Resolving Transitions ==
+
+When the elevator is moving up (current state = `MovingUp`) and the event `Stop` is fired, the `MovingUp` state is searched for a matching transition and none is found. Therefore the next state up in the hierarchy (`Moving`) is checked. There, a transition for the event `Stop` is found and the transition is executed.
+
+== Entering Sub States ==
+
+When the elevator is in the state `Error` and the `Reset` event is fired, the state machine enters the last active state because `Deep`is used as `HistoryType` of the `Healthy` state (a very risky implementation of an elevator by the way ;-) )
