@@ -1,4 +1,5 @@
 #summary How hierarchical transitions are handled by the state machine
+#labels StateMachine
 
 The current state of the state machine is always a leaf state (= a state without children).
 Whenever a transition points to a super state (= a state with children), the state machine enters a child state depending on the specified history type and initial child state. This is repeated until a leaf state is reached.
@@ -28,7 +29,19 @@ The `HistoryItem`, which is set when a hierarchy is defined, specifies how the s
 The state in which the transition ends defines the history behaviour of all sub states. That means if the state defines a history type equal to `Deep`, the history types of the entered children are ignored, the state machien will end in the last active state of the super state the transition ended in.
 
 
+= Entering and Leaving States and Executing Actions =
 
-]
+The first step in executing a transition is leaving states. States are left beginning with the current state up the hierarchy until the destination state of the transition is a child of the satte currently inspected.
+
+The second step is executing all actions defined by the transition.
+
+The third step is entering states. From the common super state of the source and destination states, states are entered down the hierarchy until the destination state is reached.
+
+== Internal Transitions ==
+
+No states are left or entered when an internal transition is executed. An internal transition is a transition with no destination specified; the transition is executed inside a state (leaf state or super state).
 
 
+= Examples =
+
+[http://bbvcommon.googlecode.com/svn/wikiFiles/StateMachine/ElevatorStateMachine.gif]
