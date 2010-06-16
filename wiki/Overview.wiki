@@ -12,7 +12,7 @@ The project is split into three sub-projects
 
 || *Events* ||
 || EventBroker || Notification component for synchronous and asynchronous loosly coupled notification with automatic thread switching ||
-|| generic event arguments || ||
+|| generic event arguments || EventArgs<YourTypeGoesHere> ||
 || !EventFilter || event filter to aggregate and delay frequently occurring events (e.g. file changes) ||
 
 || *State Machine* ||
