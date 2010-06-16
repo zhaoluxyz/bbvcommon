@@ -1,0 +1,34 @@
+#summary How hierarchical transitions are handled by the state machine
+
+The current state of the state machine is always a leaf state (= a state without children).
+Whenever a transition points to a super state (= a state with children), the state machine enters a child state depending on the specified history type and initial child state. This is repeated until a leaf state is reached.
+
+
+
+= Resolution of Transitions defined up in the hierarchy =
+
+When an event is fired on the state machine, the current state (remember that this is a leaf state) is checked whether it defines a transition for this event. If a transition is found, it is executed. If no transition is found, the state hierarchy is trafersed from the current state up until a parent state is found that defines a transition for the event or the root state is reached and no matching transition is found.
+If a transition is found, it is executed. If no matching transition is found, a `TransitionDeclined` event is fired by the state machine.
+
+
+
+= History Type =
+
+The `HistoryItem`, which is set when a hierarchy is defined, specifies how the state machine enters child states when a transition ends in a super state.
+
+  * None
+  The state enters into its initial sub-state. The sub-state itself enters its initial sub-state and so on until the innermost nested state is reached.
+
+  * Shallow
+  The state enters into its last active sub-state. The sub-state itself enters its initial sub-state and so on until the innermost nested state is reached.
+
+  * Deep
+  The state enters into its last active sub-state. The sub-state itself enters into-its last active state and so on until the innermost nested state is reached.
+
+The state in which the transition ends defines the history behaviour of all sub states. That means if the state defines a history type equal to `Deep`, the history types of the entered children are ignored, the state machien will end in the last active state of the super state the transition ended in.
+
+
+
+]
+
+
