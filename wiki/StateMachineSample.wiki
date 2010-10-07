@@ -27,7 +27,7 @@ elevator.In(States.OnFloor)
     .On(Events.GoUp).Goto(States.MovingUp).OnlyIf(this.CheckOverload)
     .On(Events.GoUp).Execute(this.AnnounceOverload)
     .On(Events.GoDown).Goto(States.MovingDown).OnlyIf(this.CheckOverload)
-    .On(Events.GoUp).Execute(this.AnnounceOverload);
+    .On(Events.GoDown).Execute(this.AnnounceOverload);
 
 elevator.In(States.Moving)
     .On(Events.Stop).Goto(States.OnFloor);
