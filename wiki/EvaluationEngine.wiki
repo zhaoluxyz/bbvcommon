@@ -1,0 +1,11 @@
+#summary Evaluation engine (still alpha)
+
+= Introduction =
+
+The evaluation engine provides an infrastructure for decoupled evaluation.
+
+The evaluation engine is currently an alpha release (under development).
+
+= Details =
+
+_more to come soon_
