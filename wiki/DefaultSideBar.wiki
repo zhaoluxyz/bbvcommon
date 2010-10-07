@@ -2,6 +2,7 @@
   * Components
     * [EventBroker Event Broker]
     * [StateMachine Hierarchical State Machine]
+    * [EvaluationEngine Evaluation Engine]
     * [AsyncModule Asynchrous Modules]
     * [HashService Hash Service]
   * [Sponsors]
