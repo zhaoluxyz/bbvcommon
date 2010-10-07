@@ -1,8 +1,5 @@
 #summary Specification of the bbv.Common.EvaluationEngine
 
-Specification generated with MSpec
-[http://bbvcommon.googlecode.com/svn/wikiFiles/EvaluationEngine/bbv.Common.EvaluationEngine.Specification.dll.html]
-
 When defining an own strategy
 
     * should use own strategy instead of default strategy to answer the question
