@@ -1,0 +1,527 @@
+<html>
+<head>
+  <title>Machine.Specifications Report</title>
+  <style type="text/css">body {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: .9em;
+}
+
+.count {
+  color: lightgrey;
+}
+
+.failure, .notimplemented, .ignored {
+  color: red;
+  font-weight: bold;
+  display: inline;
+}
+
+.notimplemented {
+  color: orange;
+}
+
+.ignored {
+  color: gold;
+}
+
+p.exception_type {
+  color: black;
+  font-weight: bold;
+  display: inline;
+}
+
+pre.exception_message {
+  border-style: dashed;
+  border-color: #FF828D;
+  border-width: thin;
+  background-color: #FFD2CF;
+  white-space: pre-wrap; /* CSS2.1 compliant */
+  white-space: -moz-pre-wrap; /* Mozilla-based browsers */
+  white-space: o-pre-wrap; /* Opera 7+ */
+  padding: 1em;
+}
+
+hr {
+  color: lightgrey;
+  border: 1px solid lightgrey;
+  height: 1px;
+}
+
+ul.prev-next {
+  padding: 0;
+  margin: 0;
+  font-size: 2em;
+  }
+  
+.spec ul.prev-next {
+  float: right;
+  right: 30%;
+  position: absolute;
+  margin-top: -1em;
+  }
+
+ul.prev-next li {
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+
+ul.prev-next li a {
+  color: lightgrey;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0 .3em;
+  border: 1px solid lightgrey;
+}
+
+ul.prev-next li.failure a {
+  border-color: red;
+}
+
+ul.prev-next li.notimplemented a {
+  border-color: orange;
+}
+
+ul.prev-next li.ignored a {
+  border-color: gold;
+}
+
+ul.prev-next li.failure a:hover {
+  background-color: red;
+  color: #fff;
+}
+
+ul.prev-next li.notimplemented a:hover {
+  background-color: orange;
+  color: #000;
+}
+
+ul.prev-next li.ignored a:hover {
+  background-color: gold;
+  color: #000;
+}
+
+ul.prev-next li.back a:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+div.supplement {
+  display: none;
+}
+  
+@media print {
+  ul.prev-next {
+    display: none;
+  }
+}
+  </style>
+</head>
+<body>
+  <ul class="prev-next">
+  </ul>
+<h1>
+    bbv.Common.EvaluationEngine.Specification
+</h1>
+<h2 class="count">
+  8 concerns,
+  17 contexts,
+  29 specifications
+</h2>
+
+  <hr/>
+  <hr/>
+<h2 class="concern">
+   specifications
+</h2>
+<h3 class="count">
+  1 context, 1 specification
+</h3><h3 class="context">
+  When defining an own strategy
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="2">should use own strategy instead of default strategy to answer the question</a>
+
+
+
+
+
+<script type="text/javascript">
+  function toggleVisibility(id, description)
+  {
+    var section = document.getElementById(id);
+    var link = document.getElementById(id + "_link");
+
+    if (section.style.display == "block")
+    {
+      section.style.display = "none";
+      link.innerHTML = "Show " + description;
+    } else
+    {
+      section.style.display = "block";
+      link.innerHTML = "Hide " + description;
+    }
+  };
+</script> 
+
+          </li>
+        </ul><h2 class="concern">
+  Hierarchical evaluation engines specifications
+</h2>
+<h3 class="count">
+  2 contexts, 5 specifications
+</h3><h3 class="context">
+  When calling answer on a child evaluation engine
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="3">should override parent aggregator with child aggregator</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="4">should use expressions from child and parent</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="5">should evaluate expressions from parent first</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When calling answer on a parent evaluation engine
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="6">should use parent aggregator</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="7">should use expressions only from parent</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Logging specifications
+</h2>
+<h3 class="count">
+  1 context, 1 specification
+</h3><h3 class="context">
+  When an answer is calculated
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="1">should log how answer was derived</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Modules specifications
+</h2>
+<h3 class="count">
+  1 context, 1 specification
+</h3><h3 class="context">
+  When loading a module into an evaluation engine
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="18">should use definitions from module to answer questions too</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Question answering specifications
+</h2>
+<h3 class="count">
+  4 contexts, 6 specifications
+</h3><h3 class="context">
+  When calling answer on evaluation engine and no aggregator is specified
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="9">should throw InvalidOperationException</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When calling answer on evaluation engine with a parameter
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="10">should pass parameter to the evaluation expressions</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When calling answer on evaluation engine with several defined expressions and an expression aggregator
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="8">should aggregate the result of all expressions into a single result</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When calling answer with expressions with constraints
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="11">should evaluate expressions without constraints</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="12">should evaluate expressions with fulfilled constraints</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="13">should ignore expressions with constraints that are not fulfilled</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Solution definition specifications
+</h2>
+<h3 class="count">
+  4 contexts, 4 specifications
+</h3><h3 class="context">
+  When defining inline expressions in the call to ByEvaluating
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="17">should evaluate all expressions for the question</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When defining several expressions with a single call to ByEvaluating
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="16">should evaluate all expressions for the question</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When defining several expressions with a single call to Solve
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="15">should evaluate all expressions for the question</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When defining several expressions with individual calls to Solve
+</h3>
+<h4 class="count">
+  1 specification
+</h4><ul><li class="spec"><a name="14">should evaluate all expressions for the question</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Validation specifications
+</h2>
+<h3 class="count">
+  2 contexts, 5 specifications
+</h3><h3 class="context">
+  When validating invalid data
+</h3>
+<h4 class="count">
+  3 specifications
+</h4><ul><li class="spec"><a name="27">should return invalid validation result</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="28">should return validation result with violations</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="29">should return violations with reason set by failing rule</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When validating valid data
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="25">should return valid validation result</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="26">should return validation result without violations</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h2 class="concern">
+  Validation Extensibility specifications
+</h2>
+<h3 class="count">
+  2 contexts, 6 specifications
+</h3><h3 class="context">
+  When validating invalid data with extended validation result
+</h3>
+<h4 class="count">
+  4 specifications
+</h4><ul><li class="spec"><a name="21">should return invalid validation result</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="22">should return validation result with violations</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="23">should return violations with reason set by failing rule</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="24">should return violations with extended data</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul><h3 class="context">
+  When validating valid data with extended validation result
+</h3>
+<h4 class="count">
+  2 specifications
+</h4><ul><li class="spec"><a name="19">should return valid validation result</a>
+
+
+
+
+
+ 
+
+          </li><li class="spec"><a name="20">should return validation result without violations</a>
+
+
+
+
+
+ 
+
+          </li>
+        </ul>
+    <hr/>
+</body>
+</html>
