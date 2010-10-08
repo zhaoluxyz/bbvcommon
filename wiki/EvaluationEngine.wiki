@@ -1,4 +1,4 @@
-#summary Evaluation engine (still alpha)
+#summary Summary of the evaluation engine (still alpha)
 
 = Features =
 
