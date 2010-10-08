@@ -1,4 +1,5 @@
 #summary Evaluation engine tutorial showing the basic usage.
+#labels Tutorial
 
 The questioner has two questions that have to be answered
 
