@@ -6,7 +6,7 @@
   * actions
     * on transitions
     * entry and exit actions
-  * transaction guards
+  * transition guards
   * hierarchical
     * different history behaviours to initialize state always to same state or last active state
   * fluent definition interface
