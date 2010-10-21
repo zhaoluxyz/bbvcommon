@@ -24,8 +24,11 @@ The project is split into three sub-projects
 || AsyncModule || Provide an easy way to a multithreaded application. Arbitrary objects can be extended with one or more worker threads and message queues to perform asynchronous tasks ||
 || !UserInterfaceThreadSynchronizer || simple to use thread switcher to execute operations synchronously or asynchronously on user interface thread (WinForms, WPF and ASP.NET) ||
 
+|| *Evaluation Engine* ||
+|| !EvaluationEngine || foundation for evaluations (rules, validations, computations, ...): Single entry point for evaluations, loosely coupled, strict separation between questioner and solution definition. ||
+
 || *Rule Engine* ||
-|| !RuleEngine || foundation for evaluating rules: Single entry point for checking rules, Loosely coupled, Context based rule sets. ||
+|| !RuleEngine (obsolete, replaced with EvalutionEngine) || foundation for evaluating rules: Single entry point for checking rules, Loosely coupled, Context based rule sets. ||
 
 || *Test Utilities* ||
 || !EventTester / EventTestList || simplifies testing of event invocations (automatic registration and deregistration, invocation count test, ...) ||
