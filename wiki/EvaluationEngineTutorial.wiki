@@ -44,7 +44,7 @@ public class Questioner
 }
 }}}
 
-The first question is a parameter-less question, the second a question with a parameter (= the text to process).
+The first question (`HowCoolIsTheEvaluationEngine`) is a parameter-less question, the second (`HowManyVowelsAreInThisText`) a question with a parameter (= the text to process).
 
 The answerer knows how this questions can be solved:
 
