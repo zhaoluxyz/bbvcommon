@@ -44,7 +44,7 @@ Actions can use the event arguments that were passed to the `Fire` method of the
 fsm.In(States.A)
     .On(Events.B)
         .If(arguments => false).Goto(States.B1)
-        .If(arguments => false).Goto(States.B2).OnlyIf(arguments => true);
+        .If(arguments => true).Goto(States.B2);
 }}}
 Guards are used to decide which transition to take if there are multiple transitions defined for a single event. Guards can use the event arguments that were passed to the `Fire` method of the state machine.
 The first transition with a guard that returns `true` is taken.
