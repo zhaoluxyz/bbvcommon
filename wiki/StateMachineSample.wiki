@@ -24,10 +24,12 @@ elevator.In(States.OnFloor)
     .ExecuteOnEntry(this.AnnounceFloor)
     .On(Events.CloseDoor).Goto(States.DoorClosed)
     .On(Events.OpenDoor).Goto(States.DoorOpen)
-    .On(Events.GoUp).Goto(States.MovingUp).OnlyIf(this.CheckOverload)
-    .On(Events.GoUp).Execute(this.AnnounceOverload)
-    .On(Events.GoDown).Goto(States.MovingDown).OnlyIf(this.CheckOverload)
-    .On(Events.GoDown).Execute(this.AnnounceOverload);
+    .On(Events.GoUp)
+        .If(this.CheckOverload).Goto(States.MovingUp)
+        .Otherwise().Execute(this.AnnounceOverload)
+    .On(Events.GoDown)
+        .If(this.CheckOverload).Goto(States.MovingDown)
+        .Otherwise().Execute(this.AnnounceOverload);
 
 elevator.In(States.Moving)
     .On(Events.Stop).Goto(States.OnFloor);
