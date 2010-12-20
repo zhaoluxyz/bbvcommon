@@ -77,36 +77,45 @@ elevator.Stop();
 
 == Log ==
 
-If the above code is run then these are the log messages (if all are enabled - see log4net documentation on how to configure log messages).
+If you add 
+
+{{{
+elevator.AddExtension(new Extensions.Log4NetExtension<States, Events>("Elevator"));
+}}}
+
+to the above code then these are the log messages (if all are enabled - see log4net documentation on how to configure log messages).
 
 Note how the state exits and enters are logged, especially for hierarchical transitions.
 
 {{{
-INFO    State machine Elevator initializes to state OnFloor.
-INFO    State machine Elevator switched to state DoorClosed.
-DEBUG    State machine Elevator performed  -> Enter Healthy -> Enter OnFloor -> Enter DoorClosed.
-INFO    Fire event ErrorOccured on state machine Elevator with current state DoorClosed and event arguments .
-INFO    State machine Elevator switched to state Error.
-DEBUG    State machine Elevator performed  -> Exit DoorClosed -> Exit OnFloor -> Exit Healthy -> Enter Error.
-INFO    Fire event Reset on state machine Elevator with current state Error and event arguments .
-INFO    State machine Elevator switched to state DoorClosed.
-DEBUG    State machine Elevator performed  -> Exit Error -> Enter Healthy -> Enter OnFloor -> Enter DoorClosed.
-INFO    Fire event OpenDoor on state machine Elevator with current state DoorClosed and event arguments .
-INFO    State machine Elevator switched to state DoorOpen.
-DEBUG    State machine Elevator performed  -> Exit DoorClosed -> Enter DoorOpen.
-INFO    Fire event CloseDoor on state machine Elevator with current state DoorOpen and event arguments .
-INFO    State machine Elevator switched to state DoorClosed.
-DEBUG    State machine Elevator performed  -> Exit DoorOpen -> Enter DoorClosed.
-INFO    Fire event GoUp on state machine Elevator with current state DoorClosed and event arguments .
-INFO    State machine Elevator switched to state MovingUp.
-DEBUG    State machine Elevator performed  -> Exit DoorClosed -> Exit OnFloor -> Enter Moving -> Enter MovingUp.
-INFO    Fire event Stop on state machine Elevator with current state MovingUp and event arguments .
-INFO    State machine Elevator switched to state DoorClosed.
-DEBUG    State machine Elevator performed  -> Exit MovingUp -> Exit Moving -> Enter OnFloor -> Enter DoorClosed.
-INFO    Fire event OpenDoor on state machine Elevator with current state DoorClosed and event arguments .
-INFO    State machine Elevator switched to state DoorOpen.
-DEBUG    State machine Elevator performed  -> Exit DoorClosed -> Enter DoorOpen.
+Logger      Level   Message
+Elevator    INFO    State machine Elevator initializes to state OnFloor.
+Elevator    INFO    State machine Elevator switched from state  to state DoorClosed.
+Elevator    DEBUG    State machine Elevator performed  -> Enter Healthy -> Enter OnFloor -> Enter DoorClosed.
+Elevator    INFO    Fire event ErrorOccured on state machine Elevator with current state DoorClosed and event arguments .
+Elevator    INFO    State machine Elevator switched from state DoorClosed to state Error.
+Elevator    DEBUG    State machine Elevator performed  -> Exit DoorClosed -> Exit OnFloor -> Exit Healthy -> Enter Error.
+Elevator    INFO    Fire event Reset on state machine Elevator with current state Error and event arguments .
+Elevator    INFO    State machine Elevator switched from state Error to state DoorClosed.
+Elevator    DEBUG    State machine Elevator performed  -> Exit Error -> Enter Healthy -> Enter OnFloor -> Enter DoorClosed.
+Elevator    INFO    Fire event OpenDoor on state machine Elevator with current state DoorClosed and event arguments .
+Elevator    INFO    State machine Elevator switched from state DoorClosed to state DoorOpen.
+Elevator    DEBUG    State machine Elevator performed  -> Exit DoorClosed -> Enter DoorOpen.
+Elevator    INFO    Fire event CloseDoor on state machine Elevator with current state DoorOpen and event arguments .
+Elevator    INFO    State machine Elevator switched from state DoorOpen to state DoorClosed.
+Elevator    DEBUG    State machine Elevator performed  -> Exit DoorOpen -> Enter DoorClosed.
+Elevator    INFO    Fire event GoUp on state machine Elevator with current state DoorClosed and event arguments .
+Elevator    INFO    State machine Elevator switched from state DoorClosed to state MovingUp.
+Elevator    DEBUG    State machine Elevator performed  -> Exit DoorClosed -> Exit OnFloor -> Enter Moving -> Enter MovingUp.
+Elevator    INFO    Fire event Stop on state machine Elevator with current state MovingUp and event arguments .
+Elevator    INFO    State machine Elevator switched from state MovingUp to state DoorClosed.
+Elevator    DEBUG    State machine Elevator performed  -> Exit MovingUp -> Exit Moving -> Enter OnFloor -> Enter DoorClosed.
+Elevator    INFO    Fire event OpenDoor on state machine Elevator with current state DoorClosed and event arguments .
+Elevator    INFO    State machine Elevator switched from state DoorClosed to state DoorOpen.
+Elevator    DEBUG    State machine Elevator performed  -> Exit DoorClosed -> Enter DoorOpen.
 }}}
+
+You can write your own extension for different logging.
 
 == Report ==
 
