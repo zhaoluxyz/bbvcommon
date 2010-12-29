@@ -1,4 +1,5 @@
 #summary specification for the state machine
+#labels StateMachine
  
 =Exception Handling specifications =
 When a transition action throws an exception 
