@@ -38,3 +38,5 @@
 [StateMachineReport Report]
 
 [StateMachineSample Complete Sample State Machine]
+
+[StateMachineSpecification Specification]
