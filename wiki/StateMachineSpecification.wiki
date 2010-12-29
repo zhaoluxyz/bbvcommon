@@ -1,0 +1,41 @@
+#summary specification for the state machine
+ 
+=Exception Handling specifications =
+When a transition action throws an exception 
+  * should catch exception and fire transition exception event 
+  * should pass source state of failing transition to event arguments of transition exception event 
+  * should pass event id causing transition to event arguments of transition exception event 
+  * should pass thrown exception to event arguments of transition exception event 
+  * should pass event parameters to event arguments of transition exception event 
+=Execute transition specifications =
+When firing an event onto a started hierarchical state machine with source and destination having a common ancestor 
+  * should remain inside common ancestor state 
+When firing an event onto a started hierarchical state machine with source and destination having different parents 
+  * should execute exit action of source state 
+  * should execute exit action of parent of source state 
+  * should execute entry action of parent of destination state 
+  * should execute entry action of destination state 
+  * should execute actions from source upwards and then downwards to destination state 
+When firing an event onto a started state machine 
+  * should execute transition by switching state 
+  * should execute transition actions 
+  * should pass parameters to transition action 
+  * should execute exit action of source state 
+  * should execute entry action of destination state 
+=Initialize state machine specifications =
+When a state machine is initialized 
+  * should set current state of state machine to state to which it is initialized 
+  * should execute entry action of state to which state machine is initialized 
+When initializing to a super state of a hierarchical state machine 
+  * should set current state of state machine to initial leaf state of the state to which it is initialized 
+  * should execute entry action of super state to which state machine is initialized 
+  * should execute entry actions of initial sub states until a leaf state is reached 
+When initializing to leaf state of a hierarchical state machine 
+  * should set current state of state machine to state to which it is initialized 
+  * should execute entry action of state to which state machine is initialized 
+  * should execute entry action of super states of the state to which state machine is initialized 
+=Start and stop state machine specifications =
+When starting an initialized state machine 
+  * should execute queued events 
+When stopping a running state machine 
+  * should queue events 
