@@ -35,7 +35,7 @@ The project is split into three sub-projects
 || !Log4NetHelper || test log messages ||
 
 || *csv* ||
-|| !CsvParser / Writer || Parser and Writer for .csv (comma separated values) files. ||
+|| CsvParser / !CsvWriter || Parser and Writer for .csv (comma separated values) files. ||
 
 || *IO* ||
 || !TextFileReader / !TextFileWriter || wrapper for files access to enable unit testing ||
