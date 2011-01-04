@@ -61,6 +61,15 @@ However, in special cases it is useful to define a new EventBroker for a sub sys
 Alternatively, it is possible to use matchers to build a hierarchy of publishers and subscribers. To achieve this, you have to name your publishers and subscribers by implementing . Then you can use the matchers PublishGlobal, PublishToChildren, PublishToParents, SubscribeGlobal, SubscribeToChildren, SubscribeToParents or your own to define which events are handled by your subscribers.
 
 
+=== Advanced Publication and Subscription Registrations ===
+
+When your publisher or subscriber implements the interface _IEventBrokerRegisterable_ then you get hook methods that are called when an instance of this class is registered or unregistered on an event broker. You can then programatically specify publications and subscription without using attributes.
+
+This is useful when you have for example matchers or handlers that cannot be defined compile time constant (constraint of attributes).
+
+For more details, please see the corresponding unit tests.
+
+
 == Further Information==
 
 Code samples: See sample project and unit tests in code for more samples.
