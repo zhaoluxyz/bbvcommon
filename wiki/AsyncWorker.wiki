@@ -1,0 +1,42 @@
+#summary Documentation of the Async Worker component for easy to use execution of asynchronous operations with automatic thread back switch to UI on completion.
+
+= Introduction =
+
+The AsyncWorker is used for execution of asynchronous operations. It is based on the BackgroundWorker of the .net library but simplifies usage from within code (BackgroundWorker is built to be used within the designer of views).
+
+The AsyncWorker provides automatic switching back to the thread where the operation was started.
+Please note that this works only if the thread from which the operation was started is associated with a thread synchronizer capable of thread switching. This is true for example in the user interface thread.
+
+Therefore the AsyncWorker is best used to execute operations from the user interface without blocking it and with the possibility to update the user interface on completion of the operation. 
+
+
+
+= Samples=
+
+== Simple Async Operation ==
+
+{{{
+DoWorkEventHandler worker = delegate
+{
+    // take your time to do something because you will not block anyone...
+};
+
+AsyncWorker asyncWorker = new AsyncWorker(worker);
+
+asyncWorker.RunWorkerAsync();
+}}}
+
+
+== Async Operation with Arguments ==
+
+{{{
+DoWorkEventHandler worker = delegate(object sender, DoWorkEventArgs e)
+{
+    // do something with the argument (unfortunately not type safe - please blame .net and not me)
+    object argument = e.Argument;
+};
+
+AsyncWorker asyncWorker = new AsyncWorker(worker);
+
+asyncWorker.RunWorkerAsync("hello world");
+}}}
