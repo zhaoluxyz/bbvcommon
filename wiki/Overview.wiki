@@ -8,53 +8,97 @@ The project is split into three sub-projects
   * bbv.Common Contrib - new or contributed components
   * bbv.Common Obsolete - old components not maintained actively anymore
 
+<wiki:toc max_depth="2" />
+
 = bbv.Common =
 
-|| *Events* ||
-|| EventBroker || Notification component for synchronous and asynchronous loosly coupled notification with automatic thread switching ||
-|| generic event arguments || `EventArgs<YourTypeGoesHere>` ||
-|| !EventFilter || event filter to aggregate and delay frequently occurring events (e.g. file changes) ||
+== Events ==
 
-|| *State Machine* ||
-|| StateMachine || hierarchical state machine with fluent definition syntax ||
+EventBroker
+ Notification component for synchronous and asynchronous loosly coupled notification with automatic thread switching
 
-|| *Asynchronous Operations* ||
-|| !AsyncResult || implementation for IAsyncResult to execute asynchonous operations ||
-|| !AsyncWorker || extends BackgroundWorker with exception handling that does not swallow exception and simpler usage within code. ||
-|| AsyncModule || Provide an easy way to a multithreaded application. Arbitrary objects can be extended with one or more worker threads and message queues to perform asynchronous tasks ||
-|| !UserInterfaceThreadSynchronizer || simple to use thread switcher to execute operations synchronously or asynchronously on user interface thread (WinForms, WPF and ASP.NET) ||
+generic event arguments
+ `EventArgs<YourTypeGoesHere>`
 
-|| *Evaluation Engine* ||
-|| !EvaluationEngine || foundation for evaluations (rules, validations, computations, ...): Single entry point for evaluations, loosely coupled, strict separation between questioner and solution definition. ||
+EventFilter
+ Event filter to aggregate and delay frequently occurring events (e.g. file changes) 
 
-|| *Rule Engine* ||
-|| !RuleEngine (obsolete, replaced with EvalutionEngine) || foundation for evaluating rules: Single entry point for checking rules, Loosely coupled, Context based rule sets. ||
+== Hierarchical State Machine ==
+StateMachine
+ Hierarchical state machine with fluent definition syntax (active or passive)
 
-|| *Test Utilities* ||
-|| !EventTester / EventTestList || simplifies testing of event invocations (automatic registration and deregistration, invocation count test, ...) ||
-|| !Log4NetHelper || test log messages ||
+== Asynchronous Operations ==
+AsyncResult
+ Implementation for IAsyncResult to execute asynchonous operations.
 
-|| *csv* ||
-|| CsvParser / !CsvWriter || Parser and Writer for .csv (comma separated values) files. ||
+AsyncWorker
+ Extends BackgroundWorker with exception handling that does not swallow exception and simpler usage within code.
 
-|| *IO* ||
-|| !TextFileReader / !TextFileWriter || wrapper for files access to enable unit testing ||
-|| !TemporaryFileHolder || manages temporarily needed files (automatic deletion) ||
-|| !FileActionCommand || Execute commands recursively on the file system: Get all files, move files, number of folders and files, extensible with custom commands. ||
-|| !FileSystemHelper / !DriveUtilities || Provides information about the file system and drives ||
+AsyncModule
+ Provide an easy way to a multithreaded application. Arbitrary objects can be extended with one or more worker threads and message queues to perform asynchronous tasks.
 
-|| *Streams* ||
-|| !StreamHelper || Provides functionality for manipulating streams (copy and compare). ||
-|| !StreamLoggerStream / !StreamDecoratorStream || stream decorators for logging or generic use. ||
+UserInterfaceThreadSynchronizer
+ Simple to use thread switcher to execute operations synchronously or asynchronously on user interface thread (WinForms, WPF and ASP.NET)
 
-|| *Miscellaneous* ||
-|| !ApplicationHelper || Provides functionality to check whether application is already running and optionally switch to running instance. ||
-|| !HighResolutionStopWatch || StopWatch that uses processor ticks for high resolution timing. ||
-|| !FormatHelper || String.Format replacement that does not crash if too few arguments are defined but returns an error string. ||
-|| !StringTruncationFormatter || Format provider for formatting string with a maximal length. ||
-|| Resources || resource loaders to load data from file system or embedded resources ||
-|| HashService || Provides MD5 and SHA1 hashing. ||
-|| !WindowsHelper || Provides shutdown and logoff functionality. ||
+== Evaluation Engine / Rule Engine ==
+EvaluationEngine
+ Foundation for evaluations (rules, validations, computations, ...): Single entry point for evaluations, loosely coupled, strict separation between questioner and solution definition.
+
+Rule Engine (obsolete, replaced with EvalutionEngine)
+ Foundation for evaluating rules: Single entry point for checking rules, Loosely coupled, Context based rule sets.
+
+== Test Utilities ==
+EventTester / EventTestList
+ Simplifies testing of event invocations (automatic registration and deregistration, invocation count test, ...) ||
+
+Log4NetHelper 
+ Test log messages generated using log4net.
+
+== csv ==
+CsvParser / CsvWriter
+ Parser and Writer for .csv (comma separated values) files.
+
+== IO ==
+TextFileReader / TextFileWriter
+ Wrapper for files access to enable unit testing
+
+TemporaryFileHolder
+ Manages temporarily needed files (automatic deletion on dispose)
+
+FileActionCommand
+ Execute commands recursively on the file system: Get all files, move files, number of folders and files, extensible with custom commands.
+
+FileSystemHelper / DriveUtilities
+ Provides information about the file system and drives.
+
+== Streams ==
+StreamHelper
+ Provides functionality for manipulating streams (copy and compare).
+
+StreamLoggerStream / StreamDecoratorStream
+ Stream decorators for logging or generic use.
+
+== Miscellaneous ==
+ApplicationHelper
+ Provides functionality to check whether application is already running and optionally switch to running instance.
+
+WindowsHelper
+ Provides shutdown and logoff functionality.
+
+HighResolutionStopWatch
+ StopWatch that uses processor ticks for high resolution timing.
+
+FormatHelper
+ String.Format replacement that does not crash if too few arguments are defined but returns an error string.
+
+StringTruncationFormatter
+ Format provider for formatting string with a maximal length.
+
+Resources 
+ Resource loaders to load data from file system or embedded resources.
+
+HashService
+ Provides MD5 and SHA1 hashing.
 
 = bbv.Common Contrib =
 
