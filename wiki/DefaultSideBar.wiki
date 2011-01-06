@@ -13,4 +13,5 @@
     * Security
       * [HashService Hash Service]
   * [CodingGuidelines Coding Guidelines]
+  * [Build Building bbv.Common]
   * [Sponsors]
