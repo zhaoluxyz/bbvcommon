@@ -5,9 +5,9 @@ Three different versions are used in the assemblies of bbv.Common
   * File version
   * Product version
 
-*Assembly version* uses the pattern {major}.{minor}.0.0
+*Assembly version* uses the pattern `{major}.{minor}.0.0`
 
-*File version* uses the pattern {major}.{minor}.{svn_revision}.0
+*File version* uses the pattern `{major}.{minor}.{svn_revision}.0`
 
 *Product version* can contain additional information about the version such as _alpha_, _RC_
 
