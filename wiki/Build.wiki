@@ -1,0 +1,18 @@
+#summary Description of the steps to build bbv.Common or bbv.Common.Contrib.
+
+= Introduction =
+
+You can build your own copy of bbv.Common from the sources provided in the download area.
+
+There is no direct access to the subversion server where the sources are hosted from the internet.
+
+
+= Steps for building bbv.Common or bbv.Common.Contrib =
+
+ # download the sources from the download area.
+ # extract the sources to a local drive
+ # run the integrate.bat script found in the folder Scripts
+
+This results in a release build without the version 0.0.0.0.
+
+You cannot build a versioned release of bbv.Common directly by executing publish.bat in the Scripts folder because this script needs access to the svn repository, which is only granted to employees of bbv Software Services AG.
