@@ -8,7 +8,6 @@ The project is split into three sub-projects
   * bbv.Common Contrib - new or contributed components
   * bbv.Common Obsolete - old components not maintained actively anymore
 
-<wiki:toc max_depth="2" />
 
 = bbv.Common =
 
