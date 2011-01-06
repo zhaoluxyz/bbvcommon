@@ -1,4 +1,4 @@
-#summary Summary of the evaluation engine (still alpha)
+#summary Summary of the evaluation engine.
 #labels EvaluationEngine,Featured
 
 The evaluation engine provides an infrastructure for decoupled evaluation.
