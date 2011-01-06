@@ -12,4 +12,5 @@
       * [AsyncWorker Async Worker]
     * Security
       * [HashService Hash Service]
+  * [CodingGuidelines Coding Guidelines]
   * [Sponsors]
