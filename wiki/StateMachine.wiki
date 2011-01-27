@@ -27,7 +27,7 @@
 
 [UnitTestStateMachine Unit Test State Machine]
 
-[StateMachineHierarchicalTransactions Hierarchical Transactions]
+[StateMachineHierarchicalTransitions Hierarchical Transitions]
 
 [StateMachineExceptionHandling Exception Handling]
 
