@@ -12,11 +12,11 @@ For better testability and flexibility, I suggest that you reference your state 
 
 == States and Events ==
 
-Either state machine is defined using `States` and `Events`. States and events have to be `IComparable`s (enum, int, string, ...).
+Either state machine is defined using `States` and `Events`. States and events have to be `IComparable`s (`enum`, `int`, `string`, ...).
 
 If you have a well known set of states and events they I suggest you use enums which make the code much better readable. 
 
-If you plan to build some flexibility into your state machine (add states, transitions at runtime) then you better use an "open" type like integer.
+If you plan to build some flexibility into your state machine (e.g. add states, transitions in base classes) then you better use an "open" type like string, integer.
 
 == Interface Declaration ==
 
