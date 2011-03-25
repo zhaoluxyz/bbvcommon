@@ -63,5 +63,11 @@ The interface provides the following:
   `void Stop()`
     Stops the state machine. Events will be queued until the state machine is started.
 
-  `string Report()`
-    Returns a report of this state machine with all states and transitions.
+  `void AddExtension(IExtension<TState, TEvent> extension)`
+    Adds an extension (e.g. logging extension)
+
+  `void ClearExtensions()`
+    Clears all extensions.
+
+  `void Report(IStateMachineReport<TState, TEvent> reportGenerator)`
+    Creates a report with the specified generator (e.g. csv, yEd)
