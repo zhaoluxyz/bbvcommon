@@ -2,7 +2,7 @@
 #labels Featured,StateMachine
 
 == Features ==
-  * value type based (enums, ints, ...) resulting in single class state machines.
+  * use enums, ints or strings for states and events - resulting in single class state machines.
   * actions
     * on transitions
     * entry and exit actions
@@ -13,8 +13,14 @@
   * synchronous/asynchronous state machine
     * passive state machine handles state transitions synchronously
     * active state machine handles state transitions asynchronously on the worker thread of the state machine
-  * configurable thorough logging simplifies debugging using log4net
-  * state machine report for textual description of state machine
+    * special unit test state machine to simplify unit testing (exception behavior)
+  * extensible thorough logging simplifies debugging
+    * currently there exists a log4net log extension out of the box
+  * state machine reports
+    * textual description of state machine
+    * csv
+      * for states containing state, entry and exit actions
+      * for transitions containing source, event, guard, target, transition actions 
 
 == Documentation ==
 [StateMachineTutorial Tutorial]
