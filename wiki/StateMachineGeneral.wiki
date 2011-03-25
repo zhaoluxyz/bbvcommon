@@ -12,7 +12,7 @@ For better testability and flexibility, I suggest that you reference your state 
 
 == States and Events ==
 
-Either state machine is defined using `States` and `Events`. States and events have to be comparable value types, e.g. enums, ints.
+Either state machine is defined using `States` and `Events`. States and events have to be `IComparable`s (enum, int, string, ...).
 
 If you have a well known set of states and events they I suggest you use enums which make the code much better readable. 
 
