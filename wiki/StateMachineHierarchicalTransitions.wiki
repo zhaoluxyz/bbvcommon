@@ -31,7 +31,7 @@ The state in which the transition ends defines the history behaviour of all sub 
 
 = Entering and Leaving States and Executing Actions =
 
-The first step in executing a transition is leaving states. States are left beginning with the current state up the hierarchy until the destination state of the transition is a child of the satte currently inspected.
+The first step in executing a transition is leaving states. States are left beginning with the current state up the hierarchy until the destination state of the transition is a child of the state currently inspected.
 
 The second step is executing all actions defined by the transition.
 
