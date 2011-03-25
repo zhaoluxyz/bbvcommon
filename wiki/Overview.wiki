@@ -43,9 +43,6 @@ UserInterfaceThreadSynchronizer
 EvaluationEngine
  Foundation for evaluations (rules, validations, computations, ...): Single entry point for evaluations, loosely coupled, strict separation between questioner and solution definition.
 
-Rule Engine (obsolete, replaced with EvalutionEngine)
- Foundation for evaluating rules: Single entry point for checking rules, Loosely coupled, Context based rule sets.
-
 == Test Utilities ==
 EventTester / EventTestList
  Simplifies testing of event invocations (automatic registration and deregistration, invocation count test, ...) ||
@@ -95,20 +92,3 @@ StringTruncationFormatter
 
 Resources 
  Resource loaders to load data from file system or embedded resources.
-
-HashService
- Provides MD5 and SHA1 hashing.
-
-= bbv.Common Contrib =
-
-to be released...
-
-= Obsolete Components =
-
-Can be found on old source forge page. See link on sidebar of project overview...
-
-|| *ASP.NET* ||
-|| Caching || Provides centralized access to the ASP.Net Cache with advanced configuration possibilities. ||
-|| Exceptions || Provides components for simple exception handling and visualization ||
-|| GridViewSortExtender || Adds an image to the sort column indicating sort direction. ||
-|| UI Helpers || ControlHelper, DropDownListHelper, GridViewHelper, TextControlHelper: functionality to manipulate controls strongly typed. ||
