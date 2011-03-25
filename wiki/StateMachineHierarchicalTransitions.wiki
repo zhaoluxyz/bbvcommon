@@ -15,7 +15,7 @@ If a transition is found, it is executed. If no matching transition is found, a 
 
 = History Type =
 
-The `HistoryItem`, which is set when a hierarchy is defined, specifies how the state machine enters child states when a transition ends in a super state.
+The `HistoryType`, which is set when a hierarchy is defined, specifies how the state machine enters child states when a transition ends in a super state.
 
   * None
   The state enters into its initial sub-state. The sub-state itself enters its initial sub-state and so on until the innermost nested state is reached.
