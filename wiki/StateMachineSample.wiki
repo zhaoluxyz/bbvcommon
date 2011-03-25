@@ -134,6 +134,16 @@ The picture on top of this page shows this type of report.
 
 === csv files for states and transitions ===
 
+|| *Source* || *Entry* || *Exit* || *Children* ||
+|| OnFloor || AnnounceFloor || Beep,Beep || DoorClosed, DoorOpen ||
+|| Moving || || || MovingUp, MovingDown ||
+|| Healthy || || || OnFloor, Moving ||
+|| MovingUp || || || ||
+|| MovingDown || || || ||
+|| DoorClosed || || || ||
+|| DoorOpen || || || ||	
+|| Error || || || ||	
+
 
 
 === Textual State Machine Report `StateMachineReportGenerator` ===
