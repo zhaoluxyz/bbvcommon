@@ -126,7 +126,18 @@ You can write your own extension for different logging.
 
 == Report ==
 
-The state machine report looks like this:
+There exist 3 different state machines out of the box (you can add your own by implementing `IStateMachineReport`)
+
+=== .graphml report that can be automatically layout with yEd ===
+
+The picture on top of this page shows this type of report.
+
+=== csv files for states and transitions ===
+
+
+
+=== Textual State Machine Report `StateMachineReportGenerator` ===
+
 {{{
 Elevator: initial state = none
     Healthy: initial state = OnFloor history type = Deep
