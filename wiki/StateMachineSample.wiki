@@ -66,8 +66,6 @@ private bool CheckOverload()
 
 This is a small sample to show how to interact with the state machine:
 {{{
-elevator.Initialize(States.OnFloor);
-            
 // queue some events to be performed when state machine is started.
 elevator.Fire(Events.ErrorOccured);
 elevator.Fire(Events.Reset);
