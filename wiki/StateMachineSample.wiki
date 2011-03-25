@@ -160,38 +160,39 @@ The picture on top of this page shows this type of report.
 === Textual State Machine Report `StateMachineReportGenerator` ===
 
 {{{
-Elevator: initial state = none
+Elevator: initial state = OnFloor
     Healthy: initial state = OnFloor history type = Deep
-        entry action: False
-        exit action: False
-        ErrorOccured -> Error actions: 0 guard:False
+        entry action: 
+        exit action: 
+        ErrorOccured -> Error actions:  guard: 
         OnFloor: initial state = DoorClosed history type = None
-            entry action: True
-            exit action: False
-            CloseDoor -> DoorClosed actions: 0 guard:False
-            OpenDoor -> DoorOpen actions: 0 guard:False
-            GoUp -> MovingUp actions: 0 guard:True
-            GoUp -> internal actions: 1 guard:False
-            GoUp -> internal actions: 1 guard:False
-            GoDown -> MovingDown actions: 0 guard:True
+            entry action: AnnounceFloor
+            exit action: Beep, Beep
+            CloseDoor -> DoorClosed actions:  guard: 
+            OpenDoor -> DoorOpen actions:  guard: 
+            GoUp -> MovingUp actions:  guard: CheckOverload
+            GoUp -> internal actions: AnnounceOverload, Beep guard: 
+            GoDown -> MovingDown actions:  guard: CheckOverload
+            GoDown -> internal actions: AnnounceOverload guard: 
             DoorClosed: initial state = None history type = None
-                entry action: False
-                exit action: False
+                entry action: 
+                exit action: 
             DoorOpen: initial state = None history type = None
-                entry action: False
-                exit action: False
+                entry action: 
+                exit action: 
         Moving: initial state = MovingUp history type = Shallow
-            entry action: False
-            exit action: False
-            Stop -> OnFloor actions: 0 guard:False
+            entry action: 
+            exit action: 
+            Stop -> OnFloor actions:  guard: 
             MovingUp: initial state = None history type = None
-                entry action: False
-                exit action: False
+                entry action: 
+                exit action: 
             MovingDown: initial state = None history type = None
-                entry action: False
-                exit action: False
+                entry action: 
+                exit action: 
     Error: initial state = None history type = None
-        entry action: False
-        exit action: False
-        Reset -> Healthy actions: 0 guard:False
+        entry action: 
+        exit action: 
+        Reset -> Healthy actions:  guard: 
+        ErrorOccured -> internal actions:  guard: 
 }}}
