@@ -32,9 +32,13 @@ fsm.In(States.A)
             this.MyAction );
 }}}
 Actions are defined with `Execute`. Multiple actions can be defined on a single transition. The actions are performed in the same order as they are defined. An action is defined as a delegate. Therefore, you can use lambda expressions or normal delegates.
-The signature of actions is as follows:
+The following signatures are supported:
 {{{
-void Action(object[] arguments)
+void TransitionAction(object[] arguments) // to get access to all arguments passed to Fire
+
+void TransitionAction<T>(T parameter) // if Fire is calles with a single argument
+
+void TransitionAction() // for actions that do not need access to the parameters passed to Fire
 }}}
 
 Actions can use the event arguments that were passed to the `Fire` method of the state machine.
