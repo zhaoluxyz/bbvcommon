@@ -18,21 +18,25 @@ elevator.In(States.Healthy)
     .On(Events.ErrorOccured).Goto(States.Error);
 
 elevator.In(States.Error)
-    .On(Events.Reset).Goto(States.Healthy);
+    .On(Events.Reset).Goto(States.Healthy)
+    .On(Events.ErrorOccured);
 
 elevator.In(States.OnFloor)
     .ExecuteOnEntry(this.AnnounceFloor)
+    .ExecuteOnExit(Beep, Beep)
     .On(Events.CloseDoor).Goto(States.DoorClosed)
     .On(Events.OpenDoor).Goto(States.DoorOpen)
     .On(Events.GoUp)
-        .If(this.CheckOverload).Goto(States.MovingUp)
-        .Otherwise().Execute(this.AnnounceOverload)
+        .If(CheckOverload).Goto(States.MovingUp)
+        .Otherwise().Execute(this.AnnounceOverload, Beep)
     .On(Events.GoDown)
-        .If(this.CheckOverload).Goto(States.MovingDown)
+        .If(CheckOverload).Goto(States.MovingDown)
         .Otherwise().Execute(this.AnnounceOverload);
 
 elevator.In(States.Moving)
     .On(Events.Stop).Goto(States.OnFloor);
+
+elevator.Initialize(States.OnFloor);
 }}}
 
 The above state machine uses these actions and guards:
@@ -43,6 +47,11 @@ private void AnnounceFloor()
 }
 
 private void AnnounceOverload()
+{
+    /* announce overload */
+}
+
+private void Beep()
 {
     /* announce overload */
 }
