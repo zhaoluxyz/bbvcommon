@@ -1,14 +1,12 @@
 #summary Describes the state machine report.
 #labels StateMachine
 
-You can request a report of the state machine. 
-
-This report contains:
-  * state machine name
-  * initial state
-  * all states, with initial sub states, history mode and whether they have entry- and exit-actions
-  * all transitions per state, with information whether they have a guard and how many actions are defined.
+You can request a report of the state machine. This report contains the states, transitions, guards and actions (depends on the report generator used).
 
 You can use this report to check your implementation.
 
-See [StateMachineSample Sample] for a sample report.
+Out of the box, there is a report generator for csv files, graphml files that can be layout with yEd and a textual report.
+
+See [StateMachineSample Sample] for sample reports.
+
+You can add your custom report by implementing a `IStateMachineReport`.
