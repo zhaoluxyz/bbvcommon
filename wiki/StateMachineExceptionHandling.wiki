@@ -18,3 +18,5 @@ stateMachine.TransitionExceptionThrown += (sender, eventArgs) =>
 }}}
 
 Normally, you want send the state machine in a error state to reflect this situation.
+
+If you do not register the error events, the state machine will throw exceptions anyway to prevent that exceptions are swallowed.
