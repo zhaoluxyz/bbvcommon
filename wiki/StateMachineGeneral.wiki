@@ -53,7 +53,7 @@ The interface provides the following:
     Fires an event. The event is queued first.
 
   `void Initialize(TState initialState)`
-    Initializes the state machine to the specified initial state. Can only be called once.
+    Initializes the state machine to the specified initial state. Can only be called once. Note that the initial state is not yet entered until the state machine is started.
 
   `void Start()`
     Starts the state machine. Events will be processed.
