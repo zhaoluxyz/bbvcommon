@@ -42,12 +42,12 @@ private void AnnounceFloor()
     /* announce floor number */
 }
 
-private void AnnounceOverload(object[] arguments)
+private void AnnounceOverload()
 {
     /* announce overload */
 }
 
-private bool CheckOverload(object[] arguments)
+private bool CheckOverload()
 {
     return whetherElevatorHasOverload;
 }
