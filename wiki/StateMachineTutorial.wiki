@@ -110,14 +110,14 @@ First you gave to initialize the state machine to set the first state (`A` in th
 fsm.Initialize(States.A);
 }}}
 
-Afterwards, you start the state machine:
+Afterward, you start the state machine:
 {{{
 fsm.Start();
 }}}
 
 Events are processed only if the state machine is started. However, you can queue up events before starting the state machine. As soon as you start the state machine, it will start performing the events.
 
-To supsend event processing, you can stop the state machine:
+To suspend event processing, you can stop the state machine:
 {{{
 fsm.Stop();
 }}}
