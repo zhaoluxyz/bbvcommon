@@ -135,7 +135,7 @@ The picture on top of this page shows this type of report.
 === csv files for states and transitions ===
 
 || *Source* || *Entry* || *Exit* || *Children* ||
-|| OnFloor || AnnounceFloor || Beep,Beep || DoorClosed, DoorOpen ||
+|| OnFloor || AnnounceFloor || Beep, Beep || DoorClosed, DoorOpen ||
 || Moving || || || MovingUp, MovingDown ||
 || Healthy || || || OnFloor, Moving ||
 || MovingUp || || || ||
@@ -144,6 +144,17 @@ The picture on top of this page shows this type of report.
 || DoorOpen || || || ||	
 || Error || || || ||	
 
+|| *Source* || *Event* || *Guard* || *Target* || *Actions* ||
+|| OnFloor || CloseDoor ||  || DoorClosed ||  ||
+|| OnFloor || OpenDoor ||  || DoorOpen ||  ||
+|| OnFloor || GoUp || CheckOverload || MovingUp ||  ||
+|| OnFloor || GoUp ||  || internal transition || AnnounceOverload, Beep ||
+|| OnFloor || GoDown || CheckOverload || MovingDown ||  ||
+|| OnFloor || GoDown ||  || internal transition || AnnounceOverload ||
+|| Moving || Stop ||  || OnFloor ||  ||
+|| Healthy || ErrorOccured ||  || Error ||  ||
+|| Error || Reset ||  || Healthy ||  ||
+|| Error || ErrorOccured ||  || internal transition ||  ||
 
 
 === Textual State Machine Report `StateMachineReportGenerator` ===
