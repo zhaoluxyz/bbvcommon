@@ -28,7 +28,7 @@ fsm.In(States.A)
     .On(Events.B)
         .Goto(States.B)
         .Execute( 
-            arguments => { // do something here },
+            arguments => { /* do something here */ },
             this.MyAction );
 }}}
 Actions are defined with `Execute`. Multiple actions can be defined on a single transition. The actions are performed in the same order as they are defined. An action is defined as a delegate. Therefore, you can use lambda expressions or normal delegates.
