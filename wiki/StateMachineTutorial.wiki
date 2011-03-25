@@ -55,7 +55,11 @@ The first transition with a guard that returns `true` is taken.
 
 The signature of guards is as follows:
 {{{
-bool Guard(object[] arguments)
+bool Guard(object[] arguments) // to get access to all arguments passed in Fire
+
+bool Guard<T>(T argument) // if a single argument is passed to Fire
+
+bool Guard() // for guards that do not need access to the parameters passed to Fire
 }}}
 
 === Entry and Exit Actions ===
