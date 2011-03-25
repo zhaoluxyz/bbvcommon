@@ -11,7 +11,7 @@ Out of the box, there is a report generator for csv files, graphml files that ca
   * textual
     contains additionally information about history type and initial states
   * yEd
-    creates a .graphml file that can be layout with e.g. yEd for graphical documentation
+    creates a .graphml file that can be layout with e.g. yEd (http://www.yworks.com/en/products_yed_about.html) for graphical documentation
 
 See [StateMachineSample Sample] for sample reports.
 
