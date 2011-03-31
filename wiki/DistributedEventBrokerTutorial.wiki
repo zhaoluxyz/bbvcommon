@@ -59,7 +59,7 @@ Example (taken from NServiceBus transport):
     public class NServiceBusEventFired : EventFired, INServiceBusEventFired
     {
     }
-
+    // Custom message factory
     public class NServiceBusEventMessageFactory : AbstractEventMessageFactory
     {
         public override IEventFired CreateEventFiredMessage(Action<IEventFired> initializer)
@@ -67,6 +67,7 @@ Example (taken from NServiceBus transport):
             return this.CreateEventFiredMessage<NServiceBusEventFired, IEventFired>(initializer);
         }
     }
+    // Custom distributed factory
     public class NServiceBusDistributedFactory : DefaultDistributedFactory
     {
         public override IEventMessageFactory CreateMessageFactory()
