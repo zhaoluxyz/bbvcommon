@@ -47,6 +47,34 @@ If you want to use another or a custom serializer you have to inherit from `Defa
 If you want to extend the standard message with additional information or if your transport layer has restrictions on the message contracts you have to inherit from `DefaultDistributedFactory` and override `CreateMessageFactory`.
 
 Your message factory can extend `AbstractEventMessageFactory` for simple scenarios.
+
+Example (taken from NServiceBus transport):
+
+{{{
+    // Custom message interface
+    public interface INServiceBusEventFired : IEventFired, IMessage
+    {
+    }
+    // Custom message implementation
+    public class NServiceBusEventFired : EventFired, INServiceBusEventFired
+    {
+    }
+
+    public class NServiceBusEventMessageFactory : AbstractEventMessageFactory
+    {
+        public override IEventFired CreateEventFiredMessage(Action<IEventFired> initializer)
+        {
+            return this.CreateEventFiredMessage<NServiceBusEventFired, IEventFired>(initializer);
+        }
+    }
+    public class NServiceBusDistributedFactory : DefaultDistributedFactory
+    {
+        public override IEventMessageFactory CreateMessageFactory()
+        {
+            return new NServiceBusEventMessageFactory();
+        }
+    }
+}}}
 === Selection Strategy ===
 Selection strategies are queried when a new topic is created on the event broker where the extension is added. The default selection strategy accepts all topics. This means that all events fired on the event broker which has the extension will be published on the transport layer.
 
