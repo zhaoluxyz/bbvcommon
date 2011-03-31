@@ -52,4 +52,10 @@ Selection strategies are queried when a new topic is created on the event broker
 
 If you want to use your own convention you have to inherit from `DefaultDistributedFactory` and override `CreateTopicSelectionStrategy`. For simple scenarios the `FuncTopicSelectionStrategy` can be used which accepts a lambda which acts as strategy implementation.
 
+Example:
+{{{
+var strategy = new FuncTopicSelectionStrategy(topic => topic.Uri.StartsWith("distributed://", StringComparison.Ordinal);
+}}}
+
+The strategy above would only accept event publications where the topic URI starts with distributed://. All other publications would not be published on the transport layer.
 == Restrictions ==
