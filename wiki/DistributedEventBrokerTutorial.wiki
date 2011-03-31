@@ -43,6 +43,22 @@ Make sure the `RhinoEsbEventFiredHandler` is registered in the windsor container
 == Customization ==
 === Serializer ===
 If you want to use another or a custom serializer you have to inherit from `DefaultDistributedFactory` and override `CreateEventArgsSerializer`.
+
+Example:
+{{{
+    public class CustomDistributedFactory: DefaultDistributedFactory     {
+
+        public override IEventArgsSerializer CreateEventArgsSerializer()
+        {
+            return new XmlEventArgsSerializer();
+        }
+
+        public virtual ITopicSelectionStrategy CreateTopicSelectionStrategy()
+        {
+            return new DefaultTopicSelectionStrategy();
+        }
+    }
+}}}
 === Custom message ===
 If you want to extend the standard message with additional information or if your transport layer has restrictions on the message contracts you have to inherit from `DefaultDistributedFactory` and override `CreateMessageFactory`.
 
@@ -83,8 +99,14 @@ If you want to use your own convention you have to inherit from `DefaultDistribu
 
 Example:
 {{{
-var strategy = new FuncTopicSelectionStrategy(topic => 
+    public class CustomDistributedFactory: DefaultDistributedFactory     {
+
+        public override ITopicSelectionStrategy CreateTopicSelectionStrategy()
+        {
+            return new FuncTopicSelectionStrategy(topic => 
 topic.Uri.StartsWith("distributed://", StringComparison.Ordinal);
+        }
+    }
 }}}
 
 The strategy above would only accept event publications where the topic URI starts with distributed://. All other publications would not be published on the transport layer.
