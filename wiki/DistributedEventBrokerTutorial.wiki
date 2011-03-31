@@ -1,1 +1,17 @@
-#summary Tutorial for the Distributed Event Broker
+#summary Shows the basic usage of the Distributed Event Broker
+
+== Setup of the distributed event broker ==
+The usage of the distributed event broker is astonishingly simple when you have prepared your transport layer. Basically it is only two lines of code.
+{{{
+// Use existing event broker or create special one for distributed events
+var eventBroker = new EventBroker();
+
+// Use extension method AddDistributedExtension
+var distributedEventBrokerExtension = // new TechnologySpecificDistributedEventBrokerExtension
+eventBroker.AddDistributedExtension(distributedEventBrokerExtension);
+}}}
+
+== Transport layers ==
+=== NServiceBus ===
+=== MassTransit ===
+=== RhinoESB ===
