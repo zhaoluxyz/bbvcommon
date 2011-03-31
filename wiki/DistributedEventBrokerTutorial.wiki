@@ -47,15 +47,9 @@ If you want to use another or a custom serializer you have to inherit from `Defa
 Example:
 {{{
     public class CustomDistributedFactory: DefaultDistributedFactory     {
-
         public override IEventArgsSerializer CreateEventArgsSerializer()
         {
             return new XmlEventArgsSerializer();
-        }
-
-        public virtual ITopicSelectionStrategy CreateTopicSelectionStrategy()
-        {
-            return new DefaultTopicSelectionStrategy();
         }
     }
 }}}
