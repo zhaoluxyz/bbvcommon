@@ -105,3 +105,4 @@ topic.Uri.StartsWith("distributed://", StringComparison.Ordinal);
 
 The strategy above would only accept event publications where the topic URI starts with distributed://. All other publications would not be published on the transport layer.
 == Restrictions ==
+Currently only asynchronous handling of publications is allowed!
