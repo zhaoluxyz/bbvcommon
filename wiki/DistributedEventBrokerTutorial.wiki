@@ -38,4 +38,8 @@ eventBroker.AddDistributedExtension(extension);
 }}}
 
 Make sure the `RhinoEsbEventFiredHandler` is registered in the windsor container.
+== Scoping & Identification ==
+
+== Customization ==
+
 == Restrictions ==
