@@ -15,3 +15,5 @@ eventBroker.AddDistributedExtension(distributedEventBrokerExtension);
 === NServiceBus ===
 === MassTransit ===
 === RhinoESB ===
+
+== Restrictions ==
