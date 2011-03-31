@@ -40,7 +40,7 @@ eventBroker.AddDistributedExtension(extension);
 Make sure the `RhinoEsbEventFiredHandler` is registered in the windsor container.
 == Scoping & Identification ==
 === Distributed Event Broker Identification ===
-The distributed event broker identification allows to bound several event brokers together. Only events fired in the same context are recognized from the event brokers participating in the context. That allows to have several distributed event brokers in one application.
+The distributed event broker identification allows to bound several event brokers together. Only events fired in the same context are recognized from the event brokers participating in the context. That allows having several distributed event brokers in one application.
 
 Example (here with NServiceBus Transport):
 {{{
@@ -55,7 +55,7 @@ eventBrokerY.AddDistributedExtension(extensionY);
 
 Although eventBrokerX and eventBrokerY are running in the same process events published and handled on the distributed event broker of the business domain "X" are not seen on the distributed event broker of the business domain "Y" and vice versa.
 === Event Broker Identification ===
-Each event broker can be identified by specifying an event broker identification. This information is just transmitted when an event is published without further impact on the distributed event broker. But it let's you distinguish from which location the event was coming from.
+Each event broker can be identified by specifying an event broker identification. This information is just transmitted when an event is published without further impact on the distributed event broker. But it lets you distinguish from which location the event was coming from.
 
 The identification can be specified by using the following `AddDistributedExtension` overload:
 
@@ -63,7 +63,7 @@ The identification can be specified by using the following `AddDistributedExtens
 eventBroker.AddDistributedExtension(extension, "ApplicationXGlobalEventBroker");
 }}}
 
-when using the extension method without specifying the event broker identification a new System.Guid is generated for each event broker.
+When using the extension method without specifying the event broker identification a new System.Guid is generated for each event broker.
 
 {{{
 // Will identify event broker by using System.Guid internally.
