@@ -54,7 +54,8 @@ If you want to use your own convention you have to inherit from `DefaultDistribu
 
 Example:
 {{{
-var strategy = new FuncTopicSelectionStrategy(topic => topic.Uri.StartsWith("distributed://", StringComparison.Ordinal);
+var strategy = new FuncTopicSelectionStrategy(topic => 
+topic.Uri.StartsWith("distributed://", StringComparison.Ordinal);
 }}}
 
 The strategy above would only accept event publications where the topic URI starts with distributed://. All other publications would not be published on the transport layer.
