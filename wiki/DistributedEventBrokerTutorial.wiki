@@ -39,7 +39,22 @@ eventBroker.AddDistributedExtension(extension);
 
 Make sure the `RhinoEsbEventFiredHandler` is registered in the windsor container.
 == Scoping & Identification ==
+=== Distributed Event Broker Identification ===
+The distributed event broker identification allows to bound several event brokers together. Only events fired in the same context are recognized from the event brokers participating in the context. That allows to have several distributed event brokers in one application.
 
+Example (here with NServiceBus Transport):
+{{{
+// Setup event broker and extension for business domain "X"
+var extensionX = new NServiceBusDistributedEventBrokerExtension("DistributedEventBrokerX", bus);
+eventBrokerX.AddDistributedExtension(extensionX);
+
+// Setup event broker and extension for business domain "Y"
+var extensionY = new NServiceBusDistributedEventBrokerExtension("DistributedEventBrokerY", bus);
+eventBrokerY.AddDistributedExtension(extensionY);
+}}}
+
+Although eventBrokerX and eventBrokerY are running in the same process events published and handled on the distributed event broker of the business domain "X" are not seen on the distributed event broker of the business domain "Y" and vice versa.
+=== Event Broker Identification ===
 == Customization ==
 === Serializer ===
 If you want to use another or a custom serializer you have to inherit from `DefaultDistributedFactory` and override `CreateEventArgsSerializer`.
