@@ -55,6 +55,20 @@ eventBrokerY.AddDistributedExtension(extensionY);
 
 Although eventBrokerX and eventBrokerY are running in the same process events published and handled on the distributed event broker of the business domain "X" are not seen on the distributed event broker of the business domain "Y" and vice versa.
 === Event Broker Identification ===
+Each event broker can be identified by specifying an event broker identification. This information is just transmitted when an event is published without further impact on the distributed event broker. But it let's you distinguish from which location the event was coming from.
+
+The identification can be specified by using the following `AddDistributedExtension` overload:
+
+{{{
+eventBroker.AddDistributedExtension(extension, "ApplicationXGlobalEventBroker");
+}}}
+
+when using the extension method without specifying the event broker identification a new System.Guid is generated for each event broker.
+
+{{{
+// Will identify event broker by using System.Guid internally.
+eventBroker.AddDistributedExtension(extension);
+}}}
 == Customization ==
 === Serializer ===
 If you want to use another or a custom serializer you have to inherit from `DefaultDistributedFactory` and override `CreateEventArgsSerializer`.
