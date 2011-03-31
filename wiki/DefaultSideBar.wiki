@@ -7,6 +7,7 @@
     * [EvaluationEngine Evaluation Engine]
     * Events
       * [EventBroker Event Broker]
+      * [DistributedEventBroker Distributed Event Broker]
     * [StateMachine Hierarchical State Machine]
     * Multi-Threading
       * [AsyncModule Asynchrous Modules]
