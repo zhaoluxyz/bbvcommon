@@ -7,12 +7,21 @@ The usage of the distributed event broker is astonishingly simple when you have 
 var eventBroker = new EventBroker();
 
 // Use extension method AddDistributedExtension
-var distributedEventBrokerExtension = // new TechnologySpecificDistributedEventBrokerExtension
-eventBroker.AddDistributedExtension(distributedEventBrokerExtension);
+var extension = // new TechnologySpecificDistributedEventBrokerExtension
+eventBroker.AddDistributedExtension(extension);
 }}}
 
 == Transport layers ==
+The sections below are meant to serve as an introduction into the specific transport layer. For transport layer specific setup, read the documentation pages provided by the project owners.
 === NServiceBus ===
+{{{
+
+IBus bus = // Get IBus instance
+var extension = new NServiceBusDistributedEventBrokerExtension("DistributedEventBroker", bus);
+eventBroker.AddDistributedExtension(extension);
+}}}
+
+Make shure that bbv.Common.DistributedEventBroker.NServiceBusAdapter.dll is scanned by NServiceBus when auto loading of message handlers is enabled.
 === MassTransit ===
 === RhinoESB ===
 
