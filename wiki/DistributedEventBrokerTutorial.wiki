@@ -74,8 +74,12 @@ When using the extension method without specifying the event broker identificati
 // Will identify event broker by using System.Guid internally.
 eventBroker.AddDistributedExtension(extension);
 }}}
+
+
 == Customization ==
+
 === Serializer ===
+
 If you want to use another or a custom serializer you have to inherit from `DefaultDistributedFactory` and override `CreateEventArgsSerializer`.
 
 Example:
@@ -87,8 +91,11 @@ Example:
         }
     }
 }}}
+
+
 === Custom message ===
-If you want to extend the standard message with additional information or if your transport layer has restrictions on the message contracts you have to inherit from `DefaultDistributedFactory` and override `CreateMessageFactory`.
+
+If you want to extend the standard message with additional information or if your transport layer has restrictions on the message contracts, you have to inherit from `DefaultDistributedFactory` and override `CreateMessageFactory`.
 
 Your message factory can extend `AbstractEventMessageFactory` for simple scenarios.
 
