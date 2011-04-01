@@ -29,7 +29,7 @@ var extension = new MassTransitDistributedEventBrokerExtension
 eventBroker.AddDistributedExtension(extension);
 }}}
 
-Make sure the `MassTransitEventFiredHandler` is registered with transient life time in the underlying container. When supported use assembly scanning functionality of container and include bbv.Common.!DistributedEventBroker.MassTransitAdapter.dll in the search.
+Make sure the `MassTransitEventFiredHandler` is registered with transient life time in the underlying container. When supported, use assembly scanning functionality of container and include bbv.Common.!DistributedEventBroker.MassTransitAdapter.dll in the search.
 === RhinoESB ===
 {{{
 IServiceBus serviceBus = // Get IServiceBus instance
