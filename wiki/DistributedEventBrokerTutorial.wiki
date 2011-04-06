@@ -39,11 +39,9 @@ eventBroker.AddDistributedExtension(extension);
 
 Make sure the `RhinoEsbEventFiredHandler` is registered in the windsor container.
 
-
-
 == Scoping & Identification ==
-
 === Distributed Event Broker Identification ===
+[http://bbvcommon.googlecode.com/svn/wikiFiles/EventBroker/DistributedEventBrokerIdentification.png]
 
 The distributed event broker identification allows to bind several event brokers together. Only events fired in the same context are recognized from the event brokers participating in the context. That allows to have several distributed event brokers in one application.
 
