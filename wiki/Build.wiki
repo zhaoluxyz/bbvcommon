@@ -16,3 +16,13 @@ There is no direct access to the subversion server where the sources are hosted 
 This results in a release build without the version 0.0.0.0.
 
 You cannot build a versioned release of bbv.Common directly by executing publish.bat in the Scripts folder because this script needs access to the svn repository, which is only granted to employees of bbv Software Services AG.
+
+= Setup your development environment =
+To be able to work on bbv.Common or bbv.Common.Contrib sources you have to install the following software packages in this order.
+
+ # Visual Studio 2010 Premium including the Web Developer Tools
+ # Silverlight 4 Toolkit [http://silverlight.codeplex.com/releases/view/43528 Download]
+ # Silverlight 4 SDK [http://www.microsoft.com/downloads/en/details.aspx?FamilyID=298170d6-567c-4b90-9917-490ffcddba87 Download]
+ # Microsoft Silverlight 4 Tools for Visual Studio 2010 [http://www.microsoft.com/downloads/en/details.aspx?FamilyID=b3deb194-ca86-4fb6-a716-b67c2604a139&displaylang=en Download]
+ # Silverlight Developer Runtime [http://go.microsoft.com/fwlink/?LinkId=146060 Download]
+ # (Re)Apply Visual Studio Service Pack 1
