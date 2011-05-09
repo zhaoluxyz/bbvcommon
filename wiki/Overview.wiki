@@ -1,16 +1,6 @@
 #summary Overview
 #labels Featured
 
-bbv.Common consists of several mostly independent components developed at [http://www.bbv.ch bbv Software Services AG]:
-
-The project is split into three sub-projects
-  * bbv.Common - the main components
-  * bbv.Common Contrib - new or contributed components
-  * bbv.Common Obsolete - old components not maintained actively anymore
-
-
-= bbv.Common =
-
 == Events ==
 
 EventBroker
