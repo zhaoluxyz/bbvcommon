@@ -1,4 +1,4 @@
-#summary Description of the steps to build bbv.Common or bbv.Common.Contrib.
+#summary Description of the steps to build bbv.Common.
 
 = Introduction =
 
