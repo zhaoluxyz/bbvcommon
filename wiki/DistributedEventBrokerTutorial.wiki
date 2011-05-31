@@ -47,10 +47,21 @@ The distributed event broker identification allows to bind several event brokers
 
 Example (here with NServiceBus Transport):
 {{{
+// App A
 // Setup event broker and extension for business domain "X"
 var extensionX = new NServiceBusDistributedEventBrokerExtension("DistributedEventBrokerX", bus);
 eventBrokerX.AddDistributedExtension(extensionX);
 
+// Setup event broker and extension for business domain "Y"
+var extensionY = new NServiceBusDistributedEventBrokerExtension("DistributedEventBrokerY", bus);
+eventBrokerY.AddDistributedExtension(extensionY);
+
+// App B
+// Setup event broker and extension for business domain "X"
+var extensionX = new NServiceBusDistributedEventBrokerExtension("DistributedEventBrokerX", bus);
+eventBrokerX.AddDistributedExtension(extensionX);
+
+// App C
 // Setup event broker and extension for business domain "Y"
 var extensionY = new NServiceBusDistributedEventBrokerExtension("DistributedEventBrokerY", bus);
 eventBrokerY.AddDistributedExtension(extensionY);
