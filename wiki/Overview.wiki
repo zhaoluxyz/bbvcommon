@@ -6,7 +6,7 @@
 EventBroker
  Notification component for synchronous and asynchronous loosly coupled notification with automatic thread switching
 
-[EventArgs<T> generic event arguments]
+[EventArgsT generic event arguments]
  `EventArgs<YourTypeGoesHere>`
 
 EventFilter
