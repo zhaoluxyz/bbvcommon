@@ -9,6 +9,7 @@
     * Events
       * [EventBroker Event Broker]
       * [DistributedEventBroker Distributed Event Broker]
+      * [MappingEventBroker Mapping Event Broker]
     * [StateMachine Hierarchical State Machine]
     * Multi-Threading
       * [AsyncModule Asynchrous Modules]
