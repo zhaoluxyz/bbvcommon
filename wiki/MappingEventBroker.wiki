@@ -1,0 +1,6 @@
+#summary A powerful event broker extension which allows to map source events to destination events.
+= Features =
+
+= Documentation =
+
+For basic usage please see EventBroker and EventBrokerTutorial 
