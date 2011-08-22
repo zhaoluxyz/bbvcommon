@@ -21,9 +21,9 @@ _For a quick introduction see the [EventBrokerTutorial Tutorial]._
 
 A subscriber can specify whether its events are handled synchronously or asynchronously.
 
-A publisher can constrain how its event can be handled (syncronously or asynchronously). This is needed for example in events with results in the event arguments that are evaluated by the publisher after firing the event (-> constraint for synchronous handling).
+A publisher can constrain how its event can be handled (synchronously or asynchronously). This is needed for example in events with results in the event arguments that are evaluated by the publisher after firing the event (-> constraint for synchronous handling).
 
-A subscriber can request an automatic thread switch if needed onto a background thread or the user interfce thread - thus eliminating the need for manual thread switching (no need for Control.Invoke anymore). There exist the following options: 
+A subscriber can request an automatic thread switch if needed onto a background thread or the user interface thread - thus eliminating the need for manual thread switching (no need for Control.Invoke anymore). There exist the following options: 
   * handle on current thread (use Publisher handler)
   * handle on background thread from ThreadPool (use Background handler)
   * handle synchronously on user interface thread (use UserInterface handler)
