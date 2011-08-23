@@ -62,4 +62,26 @@ Example:
     }
 }}}
 === Destination Event Argument Type Providers ===
+The mapping event broker has no knowledge about the destination event arguments type. In order to be able to retrieve destination event argument types you have to provide an implementation of `IDestinationEventArgsTypeProvider` to the mapping event broker extension. The usage is basically very simple, you just need to map a destinationTopic URI to a destination event argument type. If you want to skip the mapping you just return `null` instead.:
+
+{{{
+    public class DestinationEventArgsTypeProvider : IDestinationEventArgsTypeProvider
+    {
+        private Dictionary<string, Type> mappings = 
+          new Dictionary<string, Type> 
+        {
+           { "topicdistributed://EventA", typeof(DestinationEventAEventArgs) }, 
+        };
+
+        public Type GetDestinationEventArgsType(string destinationTopic, Type sourceEventArgsType)
+        {
+            Type destinationType;
+            typeMappings.TryGet(destinationTopic, out destinationType));
+            
+            return destinationType;
+        }
+    }
+}}}
+
+Notice you also receive the `sourceEventArgsType`. This allows to build up convention based mappings.
 == Restrictions ==
