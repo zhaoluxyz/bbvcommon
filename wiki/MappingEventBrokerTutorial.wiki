@@ -85,3 +85,4 @@ The mapping event broker has no knowledge about the destination event arguments 
 
 Notice you also receive the `sourceEventArgsType`. This allows to build up convention based mappings.
 == Restrictions ==
+  * Currently only automapper is supported.
