@@ -28,7 +28,38 @@ If you want to use your own convention you have to implement  `ITopicConvention`
 
 Example:
 {{{
+var convention = FuncTopicConvention(
+  t => t.Uri.StartsWith("topicdistributed://", StringComparison.Ordinal),
+  dest => dest.Replace("topicdistributed://", "topiclocal://")
+)
+}}}
 
+Or roll your own by implementing `ITopicConvention`:
+
+Example:
+{{{
+    public class MyCustomConvetion: ITopicConvention
+    {
+        private IEnumerable<string> ExcludedCandidates
+        {
+            get
+            {
+                yield return "topicdistributed://SomeEvilEvent";
+                yield return "topicdistributed://TooHeavyEvent";
+            }
+        }
+
+        public string MapTopic(string topic)
+        {
+            return topic.Replace("topicdistributed://", "topiclocal://");
+        }
+
+        public bool IsCandidate(IEventTopicInfo eventTopic)
+        {
+            return eventTopic.Uri.StartsWith("topicdistributed://", StringComparison.Ordinal) && 
+               !this.ExcludedCandidates.Any(s => eventTopic.Uri.Equals(s));
+        }
+    }
 }}}
 === Destination Event Argument Type Providers ===
 == Restrictions ==
