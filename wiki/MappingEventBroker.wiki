@@ -1,6 +1,7 @@
 #summary A powerful event broker extension which allows to map source events to destination events.
+
 = Features =
-  * Remap your existing events a few lines of code!
+  * Remap your existing events with a few lines of code!
   * Transparently integrates into your existing usage of the event broker
   * Adapters for major .NET mapping technologies
     * AutoMapper
