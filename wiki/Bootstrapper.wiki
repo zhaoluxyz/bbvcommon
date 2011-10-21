@@ -1,0 +1,12 @@
+#summary Bootstrapper provides a simple and flexible way to make your application's startup and shutdown behavior pluggable and extendable.
+
+= Features =
+
+   * The bootstrapper provides a single entry point to startup and shutdown the application.
+   * Fluent definition syntax allowing to expressively define the startup and shutdown behavior of the application.
+   * Pluggable behaviors which allow to extend the bootstrapping mechanism in AOP like style.
+   * ConfigurationSection support with behavior.
+   * Unobtrusive Key/Value pair configuration section support with behavior.
+   * Thorough reporting of application startup and shutdown behavior.
+
+= Documentation =
