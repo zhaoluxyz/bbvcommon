@@ -3,6 +3,7 @@
   * [ReleaseNotes Release Notes]
   * [VersionConcept Version Concept]
   * Components
+    * [Bootstrapper Bootstrapper ]
     * Data
       * [CsvParser csv Parser]
     * [EvaluationEngine Evaluation Engine]
