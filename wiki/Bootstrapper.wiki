@@ -30,4 +30,4 @@ The bootstrapper package ships with some core behaviors which can be plugged int
   * Support for bootstrapper configuration sections which are basically key/value pairs and their values get automatically propagated to properties of extensions
   * Support to automatically dispose extensions which implement IDisposable
 == Reporting ==
-The bootstrapper records the bootstrapping process and allows to report the whole process to a reporter. This can be used to automatically generate architecture and design documents which describe the bootstrapping mechanism.
+The bootstrapper records the bootstrapping process and allows reporting the whole process to a reporter. This can be used to automatically generate architecture and design documents which describe the bootstrapping mechanism.
