@@ -23,5 +23,6 @@ Behaviors allow extending the bootstrapping process in an aspect oriented style.
 == Strategy ==
 The strategy defines the order of execution for extension points and behaviors. The strategy is also the context provider for context information which needs to be passed to the extension points. The strategy allows to hooking in custom executors and reporting context.
 == Executors ==
+Executors are responsible for executing extension points on extensions and the behaviors attached to it. Different executors can be used for the startup and shutdown phase of the application.
 == Configuration Support ==
 == Reporting ==
