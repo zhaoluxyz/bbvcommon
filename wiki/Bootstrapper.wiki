@@ -10,6 +10,7 @@
    * Thorough reporting of application startup and shutdown behavior.
 
 _For a quick introduction see the [BootstrapperTutorial Tutorial]._
+_For the specification see the [BootstrapperSpecification Specification]
 
 = Documentation =
 == Bootstrapper ==
