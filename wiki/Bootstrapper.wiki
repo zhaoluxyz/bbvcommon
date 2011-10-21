@@ -12,3 +12,11 @@
 _For a quick introduction see the [BootstrapperTutorial Tutorial]._
 
 = Documentation =
+== Bootstrapper ==
+When building a new application the bootstrapper is essentially the only root object which needs to be instantiated in your application main method. The bootstrapper is the central point of your application's startup and shutdown behavior. 
+== Extensions ==
+== Behaviors ==
+== Strategy ==
+== Executors ==
+== Configuration Support
+== Reporting ==
