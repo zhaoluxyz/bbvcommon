@@ -67,21 +67,21 @@ The bootstrapper setup is simply and straight forward. You can always follow the
  # Call `Shutdown` and then `Dispose` when the application stops.
 
 {{{
-	using(var bootstrapper = new DefaultBootstrapper<ICustomExtension>())
-	{
-		var strategy = new CustomStrategy();
-		bootstrapper.Initialize(strategy);
+    using(var bootstrapper = new DefaultBootstrapper<ICustomExtension>())
+    {
+        var strategy = new CustomStrategy();
+        bootstrapper.Initialize(strategy);
 
-		bootstrapper.AddExtension(new FirstCustomExtension());
-		bootstrapper.AddExtension(...);
-		bootstrapper.AddExtension(new NthCustomExtension());
-
-		bootstrapper.Run();
+        bootstrapper.AddExtension(new FirstCustomExtension());
+        bootstrapper.AddExtension(...);
+        bootstrapper.AddExtension(new NthCustomExtension());
+        
+        bootstrapper.Run();
 		
-		// When application finished call
+        // When application finished call
 		
-		bootstrapper.Shutdown();
-	}
+        bootstrapper.Shutdown();
+    }
 }}}
 _Note:`DefaultBootstrapper{TExtension}` and `AbstractStrategy{TExtension}` implement `IDisposable`. The bootstrapper takes care of disposing the strategy and the extensions if the correct behavior is attached. If you are using FxCop to check your compiled code it will produces warnings that you should dispose the strategy and the extensions which implement `IDisposable` before the references move out of scope. You can safely suppress these warnings._
 = Advanced =
