@@ -1,4 +1,10 @@
 #summary Shows the basic usage of the Bootstrapper
 
 = Introduction =
+To get started with the bootstrapper you need the following three things:
+ # Extension interface
+ # Strategy
+ # Bootstrapper setup
+== Extension interface ==
+
 = Customization =
