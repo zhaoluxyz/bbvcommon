@@ -102,11 +102,11 @@ A custom extension interface for this example could look like the following:
     }
 }}}
 The extension interface above would indicate that the applications extension points are:
- * Start
- * ContainerInitializing which allows to add `IModule` implementations
- * ContainerInitialized which allows to resolve dependencies on the `IContainer`
- * Ready
- * Stop
+ * `Start`
+ * `ContainerInitializing` which allows to add `IModule` implementations
+ * `ContainerInitialized` which allows to resolve dependencies on the `IContainer`
+ * `Ready`
+ * `Stop`
  
 An abstract base class for this use case:
 {{{
@@ -136,5 +136,66 @@ An abstract base class for this use case:
 }}}
 This allows inheritors to override only the extension points that they are interested in.
 == Strategy ==
-TODO
+{{{
+    public class CustomStrategy : AbstractStrategy<ICustomExtension>
+    {
+        private readonly Collection<IModule> modules;
+        private readonly Lazy<IContainer> container;
+
+        public CustomStrategy()
+        {
+            this.modules = new Collection<IModule>();
+            this.container = new Lazy<IContainer>(() => new Container());
+        }
+
+        protected override void DefineRunSyntax(ISyntaxBuilder<IComplexExtension> builder)
+        {
+            builder
+                .Begin
+                    .With(new ConfigurationSectionBehavior())
+                    .With(new ExtensionConfigurationSectionBehavior())
+                .Execute(e => e.Start())
+                .Execute(() => this.modules, (e, ctx) => e.ContainerInitializing(ctx))
+                    .With(mdls => new ModuleProvidingBehavior(mdls))
+                .Execute(() => this.BuildContainer(), (e, ctx) => e.ContainerInitialized(ctx))
+                    .With(ctx => ctx.Resolve<IBehavior<ICustomExtension>>())
+                .Execute(e => e.Ready());
+        }
+
+        protected override void DefineShutdownSyntax(ISyntaxBuilder<IComplexExtension> builder)
+        {
+            builder
+                .Execute(e => e.Stop())
+                .End.With(new DisposeExtensionBehavior());
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            // Dispose the container
+            base.Dispose(disposing);
+        }
+
+        private IContainer BuildContainer()
+        {
+            var lazyContainer = this.container.Value;
+            foreach (IModule module in this.modules) {
+                module.Load(lazyContainer);
+            }
+            return lazyContainer;
+        }
+    }
+}}}
+The strategy above would configure the applications startup and shutdown phase to:
+ * During startup 
+  * before calling any extension point load configuration sections
+  * and then load extension configuration sections.
+  * Call the extension point `Start` on all registered extensions
+  * Initialize the context with `this.modules` and call the extension point `ContainerInitializing` with the context on all registered extensions
+   * Execute the behavior `ModuleProvidingBehavior` which gains access to the context.
+  * Initialize the context by calling `BuildContainer` and call the extension point `ContainerInitialized` with the context on all registered extensions
+   * Execute the lazy resolved `IBehavior<ICustomExtension>`
+  * Call the extension point `Ready` on all registered extensions
+ * During shutdown 
+  * call the extension point `Stop` on all registered extensions 
 = Customization =
+TODO
