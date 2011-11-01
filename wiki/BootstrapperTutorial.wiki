@@ -83,5 +83,5 @@ The bootstrapper setup is simply and straight forward. You can always follow the
 		bootstrapper.Shutdown();
 	}
 }}}
-_Note:`DefaultBootstrapper{TExtension}` and `AbstractStrategy{TExtension}` implement `IDisposable`. The bootstrapper takes care of disposing the strategy and the extensions if the correct behavior is attached. If you are using FxCop to check your compiled code it will produces warnings that you should dispose the strategy and the extensions which implement `IDisposable` before the references move out of scope. You can safely suppress these warning._
+_Note:`DefaultBootstrapper{TExtension}` and `AbstractStrategy{TExtension}` implement `IDisposable`. The bootstrapper takes care of disposing the strategy and the extensions if the correct behavior is attached. If you are using FxCop to check your compiled code it will produces warnings that you should dispose the strategy and the extensions which implement `IDisposable` before the references move out of scope. You can safely suppress these warnings._
 = Customization =
