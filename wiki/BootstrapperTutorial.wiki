@@ -135,4 +135,6 @@ An abstract base class for this use case:
     }
 }}}
 This allows inheritors to override only the extension points that they are interested in.
+== Strategy ==
+TODO
 = Customization =
