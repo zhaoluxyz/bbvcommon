@@ -59,7 +59,7 @@ The strategy above would configure the applications startup and shutdown phase t
 Now let's look how the custom extension interface and the strategy get combined together in the bootstrapper.
 == Bootstrapper setup ==
 The bootstrapper setup is simply and straight forward. You can always follow the following steps:
- # Instantiate a new DefaultBoostrapper<TExtension>
+ # Instantiate a new `DefaultBoostrapper<TExtension>`
  # Instantiate a new strategy
  # Initialize the bootstrapper with the strategy
  # Add the required extensions
