@@ -37,5 +37,24 @@ This allows inheritors to override only the extension points that they are inter
 
 _Note: `IExtension` inherits from `IDescribable` which defines a name and a description. The name and the description are consumed by the reporting capability. The more expressive your names and descriptions are the more meaningful your report will be!_
 == Strategy ==
-The strategy defines the order of execution for extension points and behaviors. The custom strategy must inherit from `IStrategy`. For convenience there is a abstract base class `AbstractStrategy{TExtension}` which simplifies defining a custom strategy. 
+The strategy defines the order of execution for extension points and behaviors. The custom strategy must inherit from `IStrategy`. For convenience there is a abstract base class `AbstractStrategy{TExtension}` which simplifies defining a custom strategy. A very basic strategy could look like the following:
+
+{{{
+    public class CustomStrategy : AbstractStrategy<ICustomExtension>
+    {
+        protected override void DefineRunSyntax(ISyntaxBuilder<ICustomExtension> builder)
+        {
+            builder.Execute(x => x.Start());
+        }
+
+        protected override void DefineShutdownSyntax(ISyntaxBuilder<ICustomExtension> builder)
+        {
+            builder.Execute(x => x.Stop());
+        }
+    }
+}}}
+The strategy above would configure the applications startup and shutdown phase to:
+ * During startup call the extension point `Start` on all registered extensions
+ * During shutdown call the extension point `Shutdown`on all registered extensions
+ Now let's look how the custom extension interface and the strategy get combined together in the bootstrapper.
 = Customization =
