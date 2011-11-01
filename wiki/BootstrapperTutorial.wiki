@@ -29,7 +29,7 @@ That's basically it for the extension interface. Although we generally advice to
         }
 
         public virtual void Start() { }
-        public virtual void Shutdown() { }
+        public virtual void Stop() { }
         public abstract string Describe();
     }
 }}}
@@ -55,7 +55,7 @@ The strategy defines the order of execution for extension points and behaviors. 
 }}}
 The strategy above would configure the applications startup and shutdown phase to:
  * During startup call the extension point `Start` on all registered extensions
- * During shutdown call the extension point `Shutdown` on all registered extensions
+ * During shutdown call the extension point `Stop` on all registered extensions
 Now let's look how the custom extension interface and the strategy get combined together in the bootstrapper.
 == Bootstrapper setup ==
 The bootstrapper setup is simply and straight forward. You can always follow the following steps:
@@ -84,4 +84,56 @@ The bootstrapper setup is simply and straight forward. You can always follow the
 	}
 }}}
 _Note:`DefaultBootstrapper{TExtension}` and `AbstractStrategy{TExtension}` implement `IDisposable`. The bootstrapper takes care of disposing the strategy and the extensions if the correct behavior is attached. If you are using FxCop to check your compiled code it will produces warnings that you should dispose the strategy and the extensions which implement `IDisposable` before the references move out of scope. You can safely suppress these warnings._
+= Advanced =
+The bootstrapper can do more! Let us look into a more complex scenario. Often it is required to collect context information during the bootstrapping process and pass this information to the extension points. 
+
+Imagine you are using an inversion of control container which intakes `IModule` implementations to register dependencies during the bootstrapping process. All `IModule` implementations need to be passed into the `IContainer` implementation upon construction. 
+== Extension interface ==
+A custom extension interface for this example could look like the following:
+
+{{{
+    public interface ICustomExtension : IExtension
+    {
+        void Start();
+        void ContainerInitializing(ICollection<IModule> modules);
+        void ContainerInitialized(IContainer container);
+        void Ready();
+        void Stop();
+    }
+}}}
+The extension interface above would indicate that the applications extension points are:
+ * Start
+ * ContainerInitializing which allows to add `IModule` implementations
+ * ContainerInitialized which allows to resolve dependencies on the `IContainer`
+ * Ready
+ * Stop
+ 
+An abstract base class for this use case:
+{{{
+    public abstract class ComplexExtensionBase : IComplexExtension
+    {
+        public string Name
+        {
+            get { return this.GetType().FullNameToString(); }
+        }
+
+        protected IContainer Container { get; private set; }
+
+        public virtual void Start() { }
+        public virtual void ContainerInitializing(ICollection<IModule> modules) { }
+
+        public void ContainerInitialized(IContainer container)
+        {
+            this.Container = container;
+			
+			this.ContainerInitializedCore(container);
+        }
+
+        public virtual void Ready() { }
+        public virtual void Stop() { }
+        public abstract string Describe();
+		protected virtual void ContainerInitializedCore(IContainer container) { }
+    }
+}}}
+This allows inheritors to override only the extension points that they are interested in.
 = Customization =
