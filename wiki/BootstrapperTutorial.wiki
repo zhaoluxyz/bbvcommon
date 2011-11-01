@@ -6,7 +6,7 @@ To get started with the bootstrapper you need the following three things:
  # Strategy
  # Bootstrapper setup
 == Extension interface ==
-The extension interface defines the extension points which are called by the bootstrapper. The custom extension interface must inherit from `IExtension`. A very basic extension interface could look like the following:
+The extension interface defines the extension points which are called by the bootstrapper. The custom extension interface must inherit from `IExtension` and can only declare methods which return `void` as extension points. A very basic extension interface could look like the following:
 
 {{{
     public interface ICustomExtension : IExtension
@@ -37,4 +37,5 @@ This allows inheritors to override only the extension points that they are inter
 
 _Note: `IExtension` inherits from `IDescribable` which defines a name and a description. The name and the description are consumed by the reporting capability. The more expressive your names and descriptions are the more meaningful your report will be!_
 == Strategy ==
+The strategy defines the order of execution for extension points and behaviors. The custom strategy must inherit from `IStrategy`. For convenience there is a abstract base class `AbstractStrategy{TExtension}` which simplifies defining a custom strategy. 
 = Customization =
