@@ -34,5 +34,7 @@ That's basically it for the extension interface. Although we generally advice to
     }
 }}}
 This allows inheritors to override only the extension points that they are interested in.
+
+_Note: `IExtension` inherits from `IDescribable` which defines a name and a description. The name and the description are consumed by the reporting capability. The more expressive your names and descriptions are the more meaningful your report will be!_
 == Strategy ==
 = Customization =
