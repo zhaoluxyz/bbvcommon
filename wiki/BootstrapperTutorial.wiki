@@ -125,13 +125,13 @@ An abstract base class for this use case:
         public void ContainerInitialized(IContainer container)
         {
             this.Container = container;
-			this.ContainerInitializedCore(container);
+	    this.ContainerInitializedCore(container);
         }
 
         public virtual void Ready() { }
         public virtual void Stop() { }
         public abstract string Describe();
-		protected virtual void ContainerInitializedCore(IContainer container) { }
+	protected virtual void ContainerInitializedCore(IContainer container) { }
     }
 }}}
 This allows inheritors to override only the extension points that they are interested in.
