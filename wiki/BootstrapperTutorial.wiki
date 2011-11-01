@@ -34,4 +34,5 @@ That's basically it for the extension interface. Although we generally advice to
     }
 }}}
 This allows inheritors to override only the extension points that they are interested in.
+== Strategy ==
 = Customization =
