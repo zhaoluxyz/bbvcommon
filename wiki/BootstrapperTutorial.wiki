@@ -16,8 +16,8 @@ The extension interface defines the extension points which are called by the boo
     }
 }}}
 The extension interface above would indicate that the applications extension points are:
- * Start
- * Stop
+ * `Start`
+ * `Stop`
 That's basically it for the extension interface. Although we generally advice to build a base class which defines virtual members for the extension points. For example:
 
 {{{
@@ -196,6 +196,25 @@ The strategy above would configure the applications startup and shutdown phase t
    * Execute the lazy resolved `IBehavior<ICustomExtension>`
   * Call the extension point `Ready` on all registered extensions
  * During shutdown 
-  * call the extension point `Stop` on all registered extensions 
+  * call the extension point `Stop` on all registered extensions
+== Syntax ==
+The strategy above shows part of the fluent definition syntax the bootstrapper uses to gain knowledge about the startup and shutdown phase of the system. Here the Extended Backus-Naur-Form of the syntax:
+{{{
+Syntax = [ Begin ] { Execute } [ End ] .
+Begin = { With } | End .
+End = { EndWith } .
+Execute = ExecuteAction | ExecuteActionOnExtension | ExecuteActionOnExtensionWithContext .
+ExecuteAction = "Expression<Action>" { With | Execute | End } .
+ExecuteActionOnExtension = "Expression<Action<TExtension>>" { With | Execute | End } .
+ExecuteActionOnExtensionWithContext = "Expression<Func<TContext>>" "Expression<Action<TExtension, TContext>>" { WithOnContext | Execute | EndWithOnContext } .
+With = Behavior | LazyBehavior { With | Execute | End } .
+WithOnContext = LazyBehaviorWithContext { WithOnContext | Execute | EndWithOnContext } .
+EndWith = Behavior | LazyBehavior { EndWith } .
+EndWithOnContext = LazyBehaviorWithContext { EndWithOnContext } .
+Behavior = "IBehavior<TExtension>" .
+LazyBehavior = "Expression<Func<IBehavior<TExtension>>>" .
+LazyBehaviorWithContext = "Expression<Func<TContext, IBehavior<TExtension>>>" .
+}}}
+_Note:TODO Check EBNF. Show picture_
 = Customization =
 TODO
