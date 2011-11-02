@@ -215,7 +215,7 @@ Behavior = "IBehavior<TExtension>" .
 LazyBehavior = "Expression<Func<IBehavior<TExtension>>>" .
 LazyBehaviorWithContext = "Expression<Func<TContext, IBehavior<TExtension>>>" .
 }}}
-[http://bbvcommon.googlecode.com/svn/wikiFiles/Bootstrapper/SyntaxEBNF.png]
-_Note:TODO Check EBNF. The diagramm above is created with the amazing [ebnfvisualize http://code.google.com/p/ebnfvisualize/]_
+[http://bbvcommon.googlecode.com/svn/wikiFiles/Bootstrapper/SyntaxEBNF.png Visualized Syntax EBNF]
+_Note:TODO Check EBNF. The diagramm above is created with the amazing [http://code.google.com/p/ebnfvisualize/ ebnfvisualize]._
 = Customization =
 TODO
