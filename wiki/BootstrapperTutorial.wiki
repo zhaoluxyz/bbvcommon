@@ -179,9 +179,9 @@ Below is a sample `IModule` implementation which uses a made up fluent syntax to
 {{{
     public class CustomModule : IModule
     {
-        public void Configure(IContainer container)
+        public void Load(IContainer container)
         {
-			container.Register<DependencyUsingBehavior>().ToSelf();
+	    container.Register<DependencyUsingBehavior>().ToSelf();
             container.Register<IDependency>().To<Dependency>();
             container.Register<IBehavior<IComplexExtension>>().ToMethod(ctx => ctx.Resolve<DependencyUsingBehavior>());
         }
