@@ -329,5 +329,13 @@ LazyBehaviorWithContext = "Expression<Func<TContext, IBehavior<TExtension>>>" .
 }}}
 [http://bbvcommon.googlecode.com/svn/wikiFiles/Bootstrapper/SyntaxEBNF.png]
 _Note:TODO Check EBNF. The diagramm above is created with the amazing [http://code.google.com/p/ebnfvisualize/ ebnfvisualize]._
+= Configuration sections =
+The bootstrapper supports loading of configuration sections through behaviors. The behaviors responsible for loading configuration sections must be applied in the begin section of the run syntax.
+== ConfigurationSection ==
+TODO
+== ExtensionConfigurationSection ==
+TODO
+= Reporting =
+TODO
 = Customization =
 TODO
