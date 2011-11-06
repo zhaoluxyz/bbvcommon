@@ -172,11 +172,11 @@ How can we extend the bootstrapping mechanism without modifying the custom exten
 }}}
 
 {{{
-	public interface IModuleProvider : IEnumerable<IModule> { }
+    public interface IModuleProvider : IEnumerable<IModule> { }
 }}}
 
 {{{
-	public class CustomModule : IModule
+    public class CustomModule : IModule
     {
         public void Configure(IContainer container)
         {
@@ -188,7 +188,7 @@ How can we extend the bootstrapping mechanism without modifying the custom exten
 }}}
 
 {{{
-	public class ExtensionWhichIsModuleProvider : CustomExtensionBase, IModuleProvider
+    public class ExtensionWhichIsModuleProvider : CustomExtensionBase, IModuleProvider
     {
         public IEnumerator<IModule> GetEnumerator()
         {
