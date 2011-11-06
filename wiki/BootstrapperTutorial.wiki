@@ -147,12 +147,17 @@ The extension interface does not include:
  
 How can we extend the bootstrapping mechanism without modifying the custom extension interface? We need behaviors!
 == Behaviors ==
+Behaviors allow extending the bootstrapping process in an aspect oriented style. Behaviors gain access to extensions which are participating in the bootstrapper process and can therefore influence them for example by injecting additional runtime information into an extension. Behaviors must implement `IBehavior<TExtension>`. They automatically gain access to all extensions participating the bootstrapping process.
+{{{
+    public interface IModuleProvider : IEnumerable<IModule> { }
+}}}
+The behavior below demonstrates how extensions can be scanned whether they are module providers. If an extension implements `IModuleProvider` all provided modules are automatically collected in the module collection the behavior receives upon construction.
 {{{
     public class ModuleProvidingBehavior : IBehavior<ICustomExtension>
     {
         private readonly ICollection<IModule> modules;
 		
-        public FunqletProvidingBehavior(ICollection<IModule> modules)
+        public ModuleProvidingBehavior(ICollection<IModule> modules)
         {
             this.modules = modules;
         }
@@ -164,17 +169,13 @@ How can we extend the bootstrapping mechanism without modifying the custom exten
             extensions.OfType<IModuleProvider>()
 				.SelectMany(provider => provider, (provider, module) => module)
 				.ToList()
-				.ForEach(module => this.funqlets.Add(module));
+				.ForEach(module => this.modules.Add(module));
         }
 
         public string Describe() { return "Collects all IModule's on extensions which implement IModuleProvider during bootstrapping."; }
     }
 }}}
-
-{{{
-    public interface IModuleProvider : IEnumerable<IModule> { }
-}}}
-
+Below is a sample `IModule` implementation which uses a made up fluent syntax to register dependencies.
 {{{
     public class CustomModule : IModule
     {
@@ -186,7 +187,8 @@ How can we extend the bootstrapping mechanism without modifying the custom exten
         }
     }
 }}}
-
+Below an extension which implements IModuleProvider and yield returns a custom module.
+_Note:Of course the custom module could also have been added by overriding `ContainerInitializing` and adding the module to the collection. But the sample should demonstrate the power of behaviors._
 {{{
     public class ExtensionWhichIsModuleProvider : CustomExtensionBase, IModuleProvider
     {
