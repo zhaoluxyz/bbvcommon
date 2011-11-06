@@ -87,7 +87,11 @@ _Note:`DefaultBootstrapper{TExtension}` and `AbstractStrategy{TExtension}` imple
 = Advanced =
 The bootstrapper can do more! Let us look into a more complex scenario. Often it is required to collect context information during the bootstrapping process and pass this information to the extension points. 
 
-Imagine you are using an inversion of control container which intakes `IModule` implementations to register dependencies during the bootstrapping process. All `IModule` implementations need to be passed into the `IContainer` implementation upon construction. 
+Imagine you are using an inversion of control container which intakes `IModule` implementations to register dependencies during the bootstrapping process. All `IModule` implementations need to be passed into the `IContainer` implementation upon construction. For backward compatibility the bootstrapper must automatically check whether an extension implements `IModuleProvider` and register the provided modules on the `IContainer` implementation. 
+
+The application we are designing allocates both managed and unmanaged resources which need to be removed when the application is shutting down. To get this behavior some extension occasionally implement `IDisposable` which needs to be called when shutting down.
+
+Furthermore the application uses configuration sections to be able to overwrite some default configurations without recompiling the application. These configuration entries must be parsed and passed to the extensions which rely on their existance.
 == Extension interface ==
 A custom extension interface for this example could look like the following:
 
@@ -135,7 +139,106 @@ An abstract base class for this use case:
     }
 }}}
 This allows inheritors to override only the extension points that they are interested in.
+ 
+The extension interface does not include:
+ * the fact that the extensions must be checked whether they implement `IModuleProvider`
+ * the fact that the extensions must be checked whether they implement `IDisposable`
+ * the fact that configuration sections must be loaded for an extension if available
+ 
+How can we extend the bootstrapping mechanism without modifying the custom extension interface? We need behaviors!
+== Behaviors ==
+{{{
+    public class ModuleProvidingBehavior : IBehavior<ICustomExtension>
+    {
+        private readonly ICollection<IModule> modules;
+		
+        public FunqletProvidingBehavior(ICollection<IModule> modules)
+        {
+            this.modules = modules;
+        }
+
+        public string Name { get { return this.GetType().FullNameToString(); } }
+
+        public void Behave(IEnumerable<ICustomExtension> extensions)
+        {
+            extensions.OfType<IModuleProvider>()
+				.SelectMany(provider => provider, (provider, module) => module)
+				.ToList()
+				.ForEach(module => this.funqlets.Add(module));
+        }
+
+        public string Describe() { return "Collects all IModule's on extensions which implement IModuleProvider during bootstrapping."; }
+    }
+}}}
+
+{{{
+	public interface IModuleProvider : IEnumerable<IModule> { }
+	
+	public class CustomModule : IModule
+    {
+        public void Configure(IContainer container)
+        {
+			container.Register<DependencyUsingBehavior>().ToSelf();
+            container.Register<IDependency>().To<Dependency>();
+            container.Register<IBehavior<IComplexExtension>>().ToMethod(ctx => ctx.Resolve<DependencyUsingBehavior>());
+        }
+    }
+	
+	public class ExtensionWhichIsModuleProvider : CustomExtensionBase, IModuleProvider
+    {
+        public IEnumerator<IModule> GetEnumerator()
+        {
+            yield return new CustomModule();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
+
+        public override string Describe() { return "Extension which implements IModuleProvider"; }
+    }
+}}}
+
+{{{
+    public class DependencyUsingBehavior : IBehavior<ICustomExtension>
+    {
+        private readonly IDependency dependency;
+
+        public DependencyUsingBehavior(IDependency dependency)
+        {
+            this.dependency = dependency;
+        }
+
+		public string Name { get { return this.GetType().FullNameToString(); } }
+
+        public void Behave(IEnumerable<ICustomExtension> extensions)
+        {
+            this.dependency.Hello();
+        }
+
+        public string Describe() { "Uses IDependency and executes \"Hello()\" in the provided dependency."; }
+    }
+}}}
+
+{{{
+    public class DisposeExtensionBehavior : IBehavior<IExtension>
+    {
+		public string Name { get { return this.GetType().FullNameToString(); } }
+
+        public void Behave(IEnumerable<IExtension> extensions)
+        {
+            foreach (IDisposable extension in extensions.OfType<IDisposable>())
+            {
+                extension.Dispose();
+            }
+        }
+
+        public string Describe() { return "Disposes all extensions which implement IDisposable."; }
+    }
+}}}
 == Strategy ==
+A very basic strategy could look like the following:
 {{{
     public class CustomStrategy : AbstractStrategy<ICustomExtension>
     {
@@ -185,6 +288,7 @@ This allows inheritors to override only the extension points that they are inter
         }
     }
 }}}
+
 The strategy above would configure the applications startup and shutdown phase to:
  * During startup 
   * before calling any extension point load configuration sections
@@ -197,6 +301,7 @@ The strategy above would configure the applications startup and shutdown phase t
   * Call the extension point `Ready` on all registered extensions
  * During shutdown 
   * call the extension point `Stop` on all registered extensions
+  * dispose all extensions which implement `IDisposable`
 == Syntax ==
 The strategy above shows part of the fluent definition syntax the bootstrapper uses to gain knowledge about the startup and shutdown phase of the system. Here the Extended Backus-Naur-Form of the syntax:
 {{{
