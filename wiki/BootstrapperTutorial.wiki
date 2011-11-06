@@ -147,7 +147,7 @@ The extension interface does not include:
  
 How can we extend the bootstrapping mechanism without modifying the custom extension interface? We need behaviors!
 == Behaviors ==
-Behaviors allow extending the bootstrapping process in an aspect oriented style. Behaviors gain access to extensions which are participating in the bootstrapper process and can therefore influence them for example by injecting additional runtime information into an extension. Behaviors must implement `IBehavior<TExtension>`. They automatically gain access to all extensions participating the bootstrapping process.
+Behaviors allow extending the bootstrapping process in an aspect oriented style. Behaviors gain access to extensions which are participating in the bootstrapper process and can therefore influence them for example by injecting additional runtime information into an extension. Behaviors must implement `IBehavior<TExtension>`. They automatically gain access to all extensions participating the bootstrapping process. Behaviors are executed before the corresponding extension point is called.
 {{{
     public interface IModuleProvider : IEnumerable<IModule> { }
 }}}
