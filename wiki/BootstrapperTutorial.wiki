@@ -216,7 +216,7 @@ The `DependencyUsingBehavior` is a special behavior which does not consume exten
             this.dependency = dependency;
         }
 
-		public string Name { get { return this.GetType().FullNameToString(); } }
+	public string Name { get { return this.GetType().FullNameToString(); } }
 
         public void Behave(IEnumerable<ICustomExtension> extensions)
         {
@@ -230,7 +230,7 @@ The `DisposeExtensionBehavior` calls Dispose on all extensions which implement `
 {{{
     public class DisposeExtensionBehavior : IBehavior<IExtension>
     {
-		public string Name { get { return this.GetType().FullNameToString(); } }
+	public string Name { get { return this.GetType().FullNameToString(); } }
 
         public void Behave(IEnumerable<IExtension> extensions)
         {
