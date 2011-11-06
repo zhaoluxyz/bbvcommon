@@ -205,7 +205,7 @@ _Note:Of course the custom module could also have been added by overriding `Cont
         public override string Describe() { return "Extension which implements IModuleProvider"; }
     }
 }}}
-
+The `DependencyUsingBehavior` is a special behavior which does not consume extensions but execute an operation on a dependency. The dependency is resolved by using constructor injection. To enable constructor injection when constructing the `DependencyUsingBehavior` the `IContainer` implementation must already be built up and the required dependencies registered.
 {{{
     public class DependencyUsingBehavior : IBehavior<ICustomExtension>
     {
@@ -226,7 +226,7 @@ _Note:Of course the custom module could also have been added by overriding `Cont
         public string Describe() { "Uses IDependency and executes \"Hello()\" in the provided dependency."; }
     }
 }}}
-
+The `DisposeExtensionBehavior` calls Dispose on all extensions which implement `IDisposable`.
 {{{
     public class DisposeExtensionBehavior : IBehavior<IExtension>
     {
@@ -243,6 +243,7 @@ _Note:Of course the custom module could also have been added by overriding `Cont
         public string Describe() { return "Disposes all extensions which implement IDisposable."; }
     }
 }}}
+Now all these pieces must be sticked together in the strategy. Let's look how to define it.
 == Strategy ==
 The strategy defines the order of execution for extension points and behaviors. The custom strategy must inherit from `IStrategy`. For convenience use the provided abstract base class `AbstractStrategy{TExtension}` which simplifies defining a custom strategy. The strategy could look like the following:
 {{{
