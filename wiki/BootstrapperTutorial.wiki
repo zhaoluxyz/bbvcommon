@@ -37,7 +37,7 @@ This allows inheritors to override only the extension points that they are inter
 
 _Note: `IExtension` inherits from `IDescribable` which defines a name and a description. The name and the description are consumed by the reporting capability. The more expressive your names and descriptions are the more meaningful your report will be!_
 == Strategy ==
-The strategy defines the order of execution for extension points and behaviors. The custom strategy must inherit from `IStrategy`. For convenience there is a abstract base class `AbstractStrategy{TExtension}` which simplifies defining a custom strategy. A very basic strategy could look like the following:
+The strategy defines the order of execution for extension points. The custom strategy must inherit from `IStrategy`. For convenience there is a abstract base class `AbstractStrategy{TExtension}` which simplifies defining a custom strategy. A very basic strategy could look like the following:
 
 {{{
     public class CustomStrategy : AbstractStrategy<ICustomExtension>
@@ -173,7 +173,9 @@ How can we extend the bootstrapping mechanism without modifying the custom exten
 
 {{{
 	public interface IModuleProvider : IEnumerable<IModule> { }
-	
+}}}
+
+{{{
 	public class CustomModule : IModule
     {
         public void Configure(IContainer container)
@@ -183,7 +185,9 @@ How can we extend the bootstrapping mechanism without modifying the custom exten
             container.Register<IBehavior<IComplexExtension>>().ToMethod(ctx => ctx.Resolve<DependencyUsingBehavior>());
         }
     }
-	
+}}}
+
+{{{
 	public class ExtensionWhichIsModuleProvider : CustomExtensionBase, IModuleProvider
     {
         public IEnumerator<IModule> GetEnumerator()
@@ -238,7 +242,7 @@ How can we extend the bootstrapping mechanism without modifying the custom exten
     }
 }}}
 == Strategy ==
-A very basic strategy could look like the following:
+The strategy defines the order of execution for extension points and behaviors. The custom strategy must inherit from `IStrategy`. For convenience use the provided abstract base class `AbstractStrategy{TExtension}` which simplifies defining a custom strategy. The strategy could look like the following:
 {{{
     public class CustomStrategy : AbstractStrategy<ICustomExtension>
     {
