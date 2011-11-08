@@ -347,25 +347,25 @@ A reporter must implement the reporter interface `IReporter`. The reporter recei
 The reporting context is structured like the following:
 
  * Run
-  * Name
-  * Description
+  * _Name_
+  * _Description_
   * Executables
-   * Name
-   * Description
+   * _Name_
+   * _Description_
    * Behaviors
-    * Name
-    * Description
+    * _Name_
+    * _Description_
  * Shutdown
-  * Name
-  * Description
+  * _Name_
+  * _Description_
   * Executables
-   * Name
-   * Description
+   * _Name_
+   * _Description_
    * Behaviors
-    * Name
-    * Description
+    * _Name_
+    * _Description_
  * Extensions
-  * Name
-  * Description
+  * _Name_
+  * _Description_
 = Customization =
 TODO
