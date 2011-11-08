@@ -354,7 +354,7 @@ The reporting context is structured like the following:
    * Description
    * Behaviors
     * Name
-	* Description
+    * Description
  * Shutdown
   * Name
   * Description
@@ -363,7 +363,7 @@ The reporting context is structured like the following:
    * Description
    * Behaviors
     * Name
-	* Description
+    * Description
  * Extensions
   * Name
   * Description
