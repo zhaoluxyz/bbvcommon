@@ -341,7 +341,7 @@ The reporting mechanism allows to create a full report of the bootstrapping proc
 A custom reporter must implement the reporter interface `IReporter`. The reporter receives an `IReportingContext` which contains all necessary information about the bootstrapping process. The custom reporter must be passed upon the construction of the `DefaultBootstrapper<TExtension>`.
 
 {{{
-	new DefaultBootstrapper<ICustomExtension>(... /* Input your IReporter */)
+	new DefaultBootstrapper<ICustomExtension>( /* Input your IReporter */ )
 }}}
 
 The reporting context is structured like the following:
