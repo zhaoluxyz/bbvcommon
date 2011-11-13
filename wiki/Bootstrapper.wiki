@@ -1,4 +1,5 @@
 #summary Bootstrapper provides a simple and flexible way to make your application's startup and shutdown behavior pluggable and extendable.
+#labels Featured,Bootstrapper
 
 = Features =
 
