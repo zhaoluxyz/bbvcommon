@@ -21,7 +21,7 @@ Extensions contain methods which are called upon startup and shutdown of the boo
 == Extension Resolver ==
 An extension resolver allows to plug in extensions into the bootstrapper. All extensions which are resolved by the extension resolver are added before manually added extensions.
 == Behaviors ==
-Behaviors allow extending the bootstrapping process in an aspect oriented style. Behaviors gain access to extensions which are participating in the bootstrapper process and can therefore influence them for example by injecting additional runtime information into an extension.
+Behaviors allow to extend the bootstrapping process in an aspect oriented style. Behaviors gain access to extensions which are participating in the bootstrapper process and can therefore influence them for example by injecting additional runtime information into an extension.
 == Strategy ==
 The strategy defines the order of execution for extension points and behaviors. The strategy is also the context provider for context information which needs to be passed to the extension points. The strategy allows to hooking in custom executors, extension resolver and reporting context.
 == Executors ==
