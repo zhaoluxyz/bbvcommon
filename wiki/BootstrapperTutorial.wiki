@@ -44,12 +44,12 @@ The strategy defines the order of execution for extension points. The custom str
     {
         protected override void DefineRunSyntax(ISyntaxBuilder<ICustomExtension> builder)
         {
-            builder.Execute(x => x.Start());
+            builder.Execute(extension => extension.Start());
         }
 
         protected override void DefineShutdownSyntax(ISyntaxBuilder<ICustomExtension> builder)
         {
-            builder.Execute(x => x.Stop());
+            builder.Execute(extension => extension.Stop());
         }
     }
 }}}
@@ -148,6 +148,8 @@ The extension interface does not include:
 How can we extend the bootstrapping mechanism without modifying the custom extension interface? We need behaviors!
 == Behaviors ==
 Behaviors allow extending the bootstrapping process in an aspect oriented style. Behaviors gain access to extensions which are participating in the bootstrapper process and can therefore influence them for example by injecting additional runtime information into an extension. Behaviors must implement `IBehavior<TExtension>`. They automatically gain access to all extensions participating the bootstrapping process. Behaviors are executed before the corresponding extension point is called.
+
+Let's us look into an example. Imagine you have the following module provider interface below:
 {{{
     public interface IModuleProvider : IEnumerable<IModule> { }
 }}}
@@ -183,7 +185,7 @@ Below is a sample `IModule` implementation which uses a made up fluent syntax to
         {
 	    container.Register<DependencyUsingBehavior>().ToSelf();
             container.Register<IDependency>().To<Dependency>();
-            container.Register<IBehavior<IComplexExtension>>().ToMethod(ctx => ctx.Resolve<DependencyUsingBehavior>());
+            container.Register<IBehavior<ICustomExtension>>().ToMethod(ctn => ctn.Resolve<DependencyUsingBehavior>());
         }
     }
 }}}
@@ -264,18 +266,18 @@ The strategy defines the order of execution for extension points and behaviors. 
                 .Begin
                     .With(new ConfigurationSectionBehavior())
                     .With(new ExtensionConfigurationSectionBehavior())
-                .Execute(e => e.Start())
-                .Execute(() => this.modules, (e, ctx) => e.ContainerInitializing(ctx))
-                    .With(mdls => new ModuleProvidingBehavior(mdls))
-                .Execute(() => this.BuildContainer(), (e, ctx) => e.ContainerInitialized(ctx))
-                    .With(ctx => ctx.Resolve<IBehavior<ICustomExtension>>())
-                .Execute(e => e.Ready());
+                .Execute(extension => extension.Start())
+                .Execute(() => this.modules, (extension, modules) => extension.ContainerInitializing(modules))
+                    .With(modules => new ModuleProvidingBehavior(modules))
+                .Execute(() => this.BuildContainer(), (extension, container) => extension.ContainerInitialized(ctx))
+                    .With(container => container.Resolve<IBehavior<ICustomExtension>>())
+                .Execute(extension => extension.Ready());
         }
 
         protected override void DefineShutdownSyntax(ISyntaxBuilder<IComplexExtension> builder)
         {
             builder
-                .Execute(e => e.Stop())
+                .Execute(extension => extension.Stop())
                 .End.With(new DisposeExtensionBehavior());
         }
 
@@ -313,14 +315,14 @@ The strategy above would configure the applications startup and shutdown phase t
 The strategy above shows part of the fluent definition syntax the bootstrapper uses to gain knowledge about the startup and shutdown phase of the system. Here the Extended Backus-Naur-Form of the syntax:
 {{{
 Syntax = [ Begin ] { Execute } [ End ] .
-Begin = { With } | End .
-End = { EndWith } .
-Execute = ExecuteAction | ExecuteActionOnExtension | ExecuteActionOnExtensionWithContext .
+Begin = "Begin" { With } | End .
+End = "End" { EndWith } .
+Execute = "Execute" ExecuteAction | ExecuteActionOnExtension | ExecuteActionOnExtensionWithContext .
 ExecuteAction = "Expression<Action>" { With | Execute | End } .
 ExecuteActionOnExtension = "Expression<Action<TExtension>>" { With | Execute | End } .
 ExecuteActionOnExtensionWithContext = "Expression<Func<TContext>>" "Expression<Action<TExtension, TContext>>" { WithOnContext | Execute | EndWithOnContext } .
-With = Behavior | LazyBehavior { With | Execute | End } .
-WithOnContext = LazyBehaviorWithContext { WithOnContext | Execute | EndWithOnContext } .
+With = "With" Behavior | LazyBehavior { With | Execute | End } .
+WithOnContext = "With" LazyBehaviorWithContext { WithOnContext | Execute | EndWithOnContext } .
 EndWith = Behavior | LazyBehavior { EndWith } .
 EndWithOnContext = LazyBehaviorWithContext { EndWithOnContext } .
 Behavior = "IBehavior<TExtension>" .
