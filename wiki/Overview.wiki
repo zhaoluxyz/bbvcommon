@@ -2,7 +2,7 @@
 #labels Featured
 
 == Bootstrapping ==
-Bootstrapper
+[Bootstrapper Bootstrapper]
  Bootstrapper provides a simple and flexible way to make your application's startup and shutdown behavior pluggable and extendable.
 
 == Events ==
