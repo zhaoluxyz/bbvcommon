@@ -247,7 +247,7 @@ The `DisposeExtensionBehavior` calls Dispose on all extensions which implement `
 }}}
 Now all these pieces must be sticked together in the strategy. Let's look how to define it.
 == Strategy ==
-The strategy defines the order of execution for extension points and behaviors. The custom strategy must inherit from `IStrategy`. For convenience use the provided abstract base class `AbstractStrategy{TExtension}` which simplifies defining a custom strategy. The strategy could look like the following:
+The strategy defines the order of execution for extension points and behaviors. The custom strategy must inherit from `IStrategy`. For convenience, use the provided abstract base class `AbstractStrategy{TExtension}` which simplifies defining a custom strategy. The strategy could look like the following:
 {{{
     public class CustomStrategy : AbstractStrategy<ICustomExtension>
     {
