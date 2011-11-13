@@ -472,4 +472,15 @@ The reporting context is structured like the following:
   * _Name_
   * _Description_
 = Customization =
+== Executors ==
+TODO
+== Executables ==
+TODO
+== Extension Resolvers ==
+TODO
+== Reporting Context ==
+TODO
+== ConfigurationSection ==
+TODO
+== ExtensionConfigurationSection ==
 TODO
