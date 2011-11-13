@@ -6,6 +6,12 @@
 EventBroker
  Notification component for synchronous and asynchronous loosly coupled notification with automatic thread switching
 
+DistributedEventBroker
+ A powerful extension for the EventBroker which allows to fire events over process boundaries!
+
+MappingEventBroker
+ A powerful EventBroker extension which allows to map source events to destination events.
+
 [EventArgsT generic event arguments]
  `EventArgs<YourTypeGoesHere>`
 
