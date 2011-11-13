@@ -114,7 +114,7 @@ The extension interface above would indicate that the applications extension poi
  
 An abstract base class for this use case:
 {{{
-    public abstract class ComplexExtensionBase : IComplexExtension
+    public abstract class CustomExtensionBase : ICustomExtension
     {
         public string Name
         {
@@ -260,7 +260,7 @@ The strategy defines the order of execution for extension points and behaviors. 
             this.container = new Lazy<IContainer>(() => new Container());
         }
 
-        protected override void DefineRunSyntax(ISyntaxBuilder<IComplexExtension> builder)
+        protected override void DefineRunSyntax(ISyntaxBuilder<ICustomExtension> builder)
         {
             builder
                 .Begin
@@ -274,7 +274,7 @@ The strategy defines the order of execution for extension points and behaviors. 
                 .Execute(extension => extension.Ready());
         }
 
-        protected override void DefineShutdownSyntax(ISyntaxBuilder<IComplexExtension> builder)
+        protected override void DefineShutdownSyntax(ISyntaxBuilder<ICustomExtension> builder)
         {
             builder
                 .Execute(extension => extension.Stop())
@@ -334,7 +334,45 @@ _Note:TODO Check EBNF. The diagramm above is created with the amazing [http://co
 = Configuration sections =
 The bootstrapper supports loading of configuration sections through behaviors. The behaviors responsible for loading configuration sections must be applied in the begin section of the run syntax.
 == ConfigurationSection ==
-TODO
+To be able to load configuration sections the `ConfigurationSectionBehavior` must be added in the strategy.
+{{{
+    public class CustomStrategy : AbstractStrategy<ICustomExtension>
+    {
+        protected override void DefineRunSyntax(ISyntaxBuilder<ICustomExtension> builder)
+        {
+            builder
+                .Begin
+                    .With(new ConfigurationSectionBehavior())
+				...
+        }
+    }
+}}}
+Furthermore for each extension which needs access to a configuration section there must be a configuration section definition on the application configuration file. By convention the section name must be the class name of the extension which consumes the configuration section. The convention can be controlled by implementing a set of interfaces which is described in the customization section.
+
+{{{
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <configSections>
+    <section name="ExtensionWithCustomConfigurationSection" type="bbv.Common.Bootstrapper.Sample.Complex.Configuration.CustomConfigurationSection, bbv.Common.Bootstrapper.Sample"/>
+  </configSections>
+  <ExtensionWithCustomConfigurationSection remoteOnly="true">
+    <font name="TimesNewRoman" size="18"/>
+    <color background="000000" foreground="FFFFFF"/>
+  </ExtensionWithCustomConfigurationSection>
+</configuration>
+}}}
+The extension which wants to receive the loaded configuration section must implement `IConsumeConfigurationSection`.
+{{{
+    public class ExtensionWithCustomConfigurationSection : IConsumeConfigurationSection
+    {
+        private CustomConfigurationSection section;
+
+        public void Apply(ConfigurationSection section)
+        {
+            this.section = (CustomConfigurationSection)section;
+        }
+    }
+}}}
 == ExtensionConfigurationSection ==
 TODO
 = Reporting =
