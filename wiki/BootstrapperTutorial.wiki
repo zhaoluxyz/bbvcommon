@@ -347,7 +347,7 @@ To be able to load configuration sections the `ConfigurationSectionBehavior` mus
         }
     }
 }}}
-Furthermore for each extension which needs access to a configuration section there must be a configuration section definition on the application configuration file. By convention the section name must be the class name of the extension which consumes the configuration section. The convention can be controlled by implementing a set of interfaces which is described in the customization section.
+Furthermore for each extension which needs access to a configuration section there must be a configuration section definition in the application configuration file. By convention the section name must be the class name of the extension which consumes the configuration section. The convention can be controlled by implementing a set of interfaces which is described in the customization section.
 
 {{{
 <?xml version="1.0" encoding="utf-8" ?>
