@@ -519,7 +519,27 @@ And here the strategy...
 == Executables ==
 TODO
 == Extension Resolvers ==
-TODO
+An extension resolver allows to plug in extensions into the bootstrapper. All extensions which are resolved by the extension resolver are added before manually added extensions. An extension resolver must implement `IExtensionResolver<TExtension>` and add all resolved extensions to the provided `IExtensionPoint<TExtension>`.
+{{{
+    public class CustomExtensionResolver : IExtensionResolver<ICustomExtension>
+    {
+        public void Resolve(IExtensionPoint<ICustomExtension> extensionPoint)
+        {
+            extensionPoint.AddExtension(...);
+            ...
+        }
+    }
+}}}
+And here the strategy...
+{{{
+    public class CustomizationStrategy : AbstractStrategy<ICustomExtension>
+    {
+        public override IExtensionResolver<ICustomExtension> CreateExtensionResolver()
+        {
+            return new CustomExtensionResolver();
+        }
+    }
+}}}
 == Reporting Context ==
 TODO
 == ConfigurationSection ==
