@@ -473,7 +473,49 @@ The reporting context is structured like the following:
   * _Description_
 = Customization =
 == Executors ==
-TODO
+Executors are responsible for executing extension points on extensions and the behaviors attached to it. Different executors can be used for the startup and shutdown phase of the application. An executor must implement `IExecutor<TExtension>`. There are two executors:
+ * RunExecutor
+ * ShutdownExecutor
+Executors can be customized by implementing `CreateRunExecutor` and/or `CreateShutdownExecutor` on `IStrategy<TExtension>`. For example below you see a sample implementations of a run executor which executes each executable on its own thread. 
+{{{
+    public class AsynchronousRunExecutor : IExecutor<ICustomExtension>
+    {
+        public void Execute(ISyntax<ICustomExtension> syntax, IEnumerable<ICustomExtension> extensions, IExecutionContext executionContext)
+        {
+            foreach (IExecutable<ICustomExtension> executable in syntax)
+            {
+                using (var worker = new Task(
+                    state =>
+                    {
+                        var e = (IExecutable<ICustomExtension>)state;
+                        IExecutableContext executableContext = executionContext.CreateExecutableContext(e);
+
+                        e.Execute(extensions, executableContext);
+                    },
+                    executable))
+                {
+                    worker.Start();
+                    worker.Wait();
+                }
+            }
+        }
+    }
+}}}
+And here the strategy...
+{{{
+    public class CustomizationStrategy : AbstractStrategy<ICustomExtension>
+    {
+        public override IExecutor<IComplexExtension> CreateRunExecutor()
+        {
+            return new AsynchronousRunExecutor();
+        }
+
+        public override IExecutor<IComplexExtension> CreateShutdownExecutor()
+        {
+            return ...;
+        }
+    }
+}}}
 == Executables ==
 TODO
 == Extension Resolvers ==
