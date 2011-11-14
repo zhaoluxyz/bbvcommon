@@ -517,7 +517,96 @@ And here the strategy...
     }
 }}}
 == Executables ==
-TODO
+Executables are the core execution contexts which are executed by the executors. Executables are responsible for calling an extension point and all behaviors attached to it. Normally it should not be necessary to write own executable implementations. One use case could be if you want to special treat some kind of exceptions or log all exceptions thrown by an extension point. To be able to plug in your own executables you must do the following steps:
+ * Write your own `IExecutableFactory<TExtension>`
+ * Write your own `ActionExecutable`
+ * Write your own `ActionOnExtensionExecutable`
+ * Write your own `ActionOnExtensionWithInitializerExecutable`
+ * Provide new `IExecutableFactory<TExtension>` to the run and shutdown syntax builder in the constructor of the `AbstractStrategy<TExtension>`.
+Let's look into an example.
+{{{
+    public class DecoratingExecutable<TExtension> : IExecutable<TExtension>
+        where TExtension : IExtension
+    {
+        private readonly IExecutable<TExtension> decoratedExecutable;
+
+        public DecoratingExecutable(IExecutable<TExtension> decoratedExecutable)
+        {
+            this.decoratedExecutable = decoratedExecutable;
+        }
+
+        public string Name { get { return this.decoratedExecutable.Name; } }
+
+        public void Add(IBehavior<TExtension> behavior)
+        {
+            Console.WriteLine("::: Adding behavior {0}", behavior.GetType().Name);
+
+            this.decoratedExecutable.Add(behavior);
+
+            Console.WriteLine("::: Added behavior {0}", behavior.GetType().Name);
+        }
+
+        public void Execute(IEnumerable<TExtension> extensions, IExecutableContext executableContext)
+        {
+            Console.WriteLine("::: Executing executable {0}", executableContext.Name);
+
+            this.decoratedExecutable.Execute(extensions, executableContext);
+
+            Console.WriteLine("::: Executed executable {0}", executableContext.Name);
+        }
+
+        public string Describe() { return this.decoratedExecutable.Describe(); }
+    }
+}}}
+The executable factory...
+{{{
+    public class DecoratingExecutableFactory<TExtension> : IExecutableFactory<TExtension>
+        where TExtension : IExtension
+    {
+        private readonly IExecutableFactory<TExtension> decoratedExecutableFactory;
+
+        public DecoratingExecutableFactory()
+            : this(new ExecutableFactory<TExtension>())
+        {
+        }
+
+        public DecoratingExecutableFactory(IExecutableFactory<TExtension> decoratedExecutableFactory)
+        {
+            this.decoratedExecutableFactory = decoratedExecutableFactory;
+        }
+
+        public IExecutable<TExtension> CreateExecutable(Expression<Action> action)
+        {
+            IExecutable<TExtension> decoratedExecutable = this.decoratedExecutableFactory.CreateExecutable(action);
+
+            return new DecoratingExecutable<TExtension>(decoratedExecutable);
+        }
+
+        public IExecutable<TExtension> CreateExecutable<TContext>(Expression<Func<TContext>> initializer, Expression<Action<TExtension, TContext>> action, Action<IBehaviorAware<TExtension>, TContext> contextInterceptor)
+        {
+            IExecutable<TExtension> decoratedExecutable = this.decoratedExecutableFactory.CreateExecutable(initializer, action, contextInterceptor);
+
+            return new DecoratingExecutable<TExtension>(decoratedExecutable);
+        }
+
+        public IExecutable<TExtension> CreateExecutable(Expression<Action<TExtension>> action)
+        {
+            IExecutable<TExtension> decoratedExecutable = this.decoratedExecutableFactory.CreateExecutable(action);
+
+            return new DecoratingExecutable<TExtension>(decoratedExecutable);
+        }
+    }
+}}}
+And here the strategy...
+{{{
+    public class CustomizationStrategy : AbstractStrategy<ICustomExtension>
+    {
+        public CustomizationStrategy()
+            : base(new SyntaxBuilder<ICustomExtension>(new DecoratingExecutableFactory<ICustomExtension>()), new SyntaxBuilder<ICustomExtension>(new DecoratingExecutableFactory<ICustomExtension>()))
+        {
+        }
+    }
+}}}
 == Extension Resolvers ==
 An extension resolver allows to plug in extensions into the bootstrapper. All extensions which are resolved by the extension resolver are added before manually added extensions. An extension resolver must implement `IExtensionResolver<TExtension>` and add all resolved extensions to the provided `IExtensionPoint<TExtension>`.
 {{{
