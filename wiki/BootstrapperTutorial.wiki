@@ -661,7 +661,7 @@ If a configuration section needs to be loaded from another source than the appli
     {
         public ConfigurationSection GetSection(string sectionName)
         {
-			// load from custom source...
+           // load from custom source...
         }
 		
         public void Apply(ConfigurationSection section) { }
