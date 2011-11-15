@@ -659,12 +659,12 @@ If a configuration section needs to be loaded from another source than the appli
     public class ExtensionWithCustomizedLoading : ICustomExtension,
         ILoadConfigurationSection, IConsumeConfigurationSection
     {
-		public ConfigurationSection GetSection(string sectionName)
+        public ConfigurationSection GetSection(string sectionName)
         {
 			// load from custom source...
         }
 		
-		public void Apply(ConfigurationSection section) { }
+        public void Apply(ConfigurationSection section) { }
     }
 }}}
 == ExtensionConfigurationSection ==
