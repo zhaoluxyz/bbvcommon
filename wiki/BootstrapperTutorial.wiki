@@ -658,4 +658,4 @@ TODO
 `ILoadConfigurationSection`
 == ExtensionConfigurationSection ==
 === Section Name ===
-See [Section Name#Section_Name]
+See [BootstrapperTutorial#Section_Name]
