@@ -642,6 +642,20 @@ The reporting context tracks all bootstrapping information during the startup an
 }}}
 The default reporting context implementation offers several virtual members to overload the creation of the several child context implementations used in the reporting context. It is generally easier to start with overriding the virtual members instead of creating an own reporting context.
 == ConfigurationSection ==
+=== Section Name ===
+As already described by convention the class name of the extension is used to determine the name of the configuration section to load. If there is no configuration section per extension (meaning several extensions need to load the same configuration section) or a different configuration section name than the class name needs to be used, the name detection can customized by implementing `IHaveConfigurationSectionName` on the extension.
+{{{
+    public class ExtensionWithConfigurationSectionName : ICustomExtension,
+        IHaveConfigurationSectionName, IConsumeConfigurationSection
+    {
+        public string SectionName { get { return "SomeSpecialSectionName"; } }
+
+        public void Apply(ConfigurationSection section) { }
+    }
+}}}
+=== Configuration Section Loading ===
 TODO
+`ILoadConfigurationSection`
 == ExtensionConfigurationSection ==
-TODO
+=== Section Name ===
+See [Section Name#Section_Name]
