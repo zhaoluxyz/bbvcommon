@@ -654,8 +654,21 @@ As already described by convention the class name of the extension is used to de
     }
 }}}
 === Configuration Section Loading ===
-TODO
-`ILoadConfigurationSection`
+If a configuration section needs to be loaded from another source than the application configuration file, for example from a database, this can be achieved by implementing `ILoadConfigurationSection` on the extension which needs a special loading mechanism.
+{{{
+    public class ExtensionWithCustomizedLoading : ICustomExtension,
+        ILoadConfigurationSection, IConsumeConfigurationSection
+    {
+		public ConfigurationSection GetSection(string sectionName)
+        {
+			// load from custom source...
+        }
+		
+		public void Apply(ConfigurationSection section) { }
+    }
+}}}
 == ExtensionConfigurationSection ==
 === Section Name ===
-See [BootstrapperTutorial#Section_Name]
+See ConfigurationSection / Section Name.
+=== Configuration Section Loading ===
+See ConfigurationSection / Configuration Section Loading.
