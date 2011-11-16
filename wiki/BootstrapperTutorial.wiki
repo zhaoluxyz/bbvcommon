@@ -672,3 +672,32 @@ If a configuration section needs to be loaded from another source than the appli
 See ConfigurationSection / Section Name.
 === Configuration Section Loading ===
 See ConfigurationSection / Configuration Section Loading.
+=== Configuration value to property conversion ===
+As previously shown the key value pairs loaded from the `ExtensionConfigurationSectionBehavior` can be automatically set in the properties on an extension with automatic destination type conversion. If a special conversion is needed this can be customized by implementing `IHaveConversionCallbacks`:
+{{{
+
+    <ExtensionWithConversionCallbacks>
+        <Configuration>
+            <add key="EndpointAddress" value="127.0.0.1"/>
+        </Configuration>
+    </ExtensionWithConversionCallbacks>
+
+    public class ExtensionWithConversionCallbacks : ICustomExtension,
+        IHaveConversionCallbacks
+    {
+        private readonly IDictionary<string, IConversionCallback> conversion;
+
+        public ExtensionWithConversionCallbacks()
+        {
+            this.conversion = 
+			    new Dictionary<string, IConversionCallback> { { "EndpointAddress", new FuncConversionCallback((input, prop) => IPAddress.Parse(input)) } };
+        }
+
+        public IPAddress EndpointAddress { get; set; }
+
+        public IDictionary<string, IConversionCallback> ConversionCallbacks { get { return this.conversion; } }
+    }
+}}}
+`FuncConversionCallback` is a small helper class which allows to define a function delegate as conversion callback. Of course the sample above could also be written with the extension itself implementing `IConversionCallback`.
+
+If the default conversion is not suitable it can be overridden by implementing `IHaveDefaultConversionCallback`. You also have to provide an implementation of `IConversionCallback`. The default conversion callback will be called whenever there is no explicit conversion callback defined.
