@@ -690,7 +690,7 @@ As previously shown the key value pairs loaded from the `ExtensionConfigurationS
         public ExtensionWithConversionCallbacks()
         {
             this.conversion = 
-			    new Dictionary<string, IConversionCallback> { { "EndpointAddress", new FuncConversionCallback((input, prop) => IPAddress.Parse(input)) } };
+		new Dictionary<string, IConversionCallback> { { "EndpointAddress", new FuncConversionCallback((input, prop) => IPAddress.Parse(input)) } };
         }
 
         public IPAddress EndpointAddress { get; set; }
