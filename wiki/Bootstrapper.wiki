@@ -9,6 +9,7 @@
    * ConfigurationSection support with behavior.
    * Unobtrusive Key/Value pair configuration section support with behavior.
    * Thorough reporting of application startup and shutdown behavior.
+   * Heavily extendable and customizable core infrastructure
 
 _For a quick introduction see the [BootstrapperTutorial Tutorial]._
 
