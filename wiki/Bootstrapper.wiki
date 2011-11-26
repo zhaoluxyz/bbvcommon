@@ -21,7 +21,7 @@ When building a new application the bootstrapper is essentially the only root ob
 == Extensions ==
 Extensions contain methods which are called upon startup and shutdown of the bootstrapper. The methods of the extensions are extension points which can consume information gathered during the bootstrapping process for example configuration. Extensions are added directly on the bootstrapper.
 == Extension Resolver ==
-An extension resolver allows to plug in extensions into the bootstrapper. All extensions which are resolved by the extension resolver are added before manually added extensions.
+An extension resolver allows to plug in extensions into the bootstrapper. All extensions which are resolved by the extension resolver are added after manually added extensions.
 == Behaviors ==
 Behaviors allow to extend the bootstrapping process in an aspect oriented style. Behaviors gain access to extensions which are participating in the bootstrapper process and can therefore influence them for example by injecting additional runtime information into an extension.
 == Strategy ==
