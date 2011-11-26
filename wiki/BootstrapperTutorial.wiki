@@ -608,7 +608,7 @@ And here the strategy...
     }
 }}}
 == Extension Resolvers ==
-An extension resolver allows plugging in extensions into the bootstrapper. All extensions which are resolved by the extension resolver are added before manually added extensions. An extension resolver must implement `IExtensionResolver<TExtension>` and add all resolved extensions to the provided `IExtensionPoint<TExtension>`.
+An extension resolver allows plugging in extensions into the bootstrapper. All extensions which are resolved by the extension resolver are added after manually added extensions. An extension resolver must implement `IExtensionResolver<TExtension>` and add all resolved extensions to the provided `IExtensionPoint<TExtension>`.
 {{{
     public class CustomExtensionResolver : IExtensionResolver<ICustomExtension>
     {
