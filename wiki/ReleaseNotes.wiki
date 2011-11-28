@@ -1,5 +1,23 @@
 #summary Release Notes.
 
+= 7.0.11331.1827 =
+
+== General ==
+  * updated all reference libraries
+  * updated NuGet package infos
+
+== Bootstrapper ==
+
+Added bbv.Common.Bootstrapper.
+
+== Event Broker ==
+
+  * now all handlers pass exceptions to extensions and re-throw them only if no extension handled it
+
+== Mapping Event Broker Extension ==
+  * BREAKING CHANGE: Destination event args type provider receives source event args type. This allows convention based mappings
+
+
 = 7.0.1187.616 =
 
 == General == 
