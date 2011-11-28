@@ -8,7 +8,7 @@
 
 == Bootstrapper ==
 
-Added bbv.Common.Bootstrapper.
+Added [Bootstrapper].
 
 == Event Broker ==
 
