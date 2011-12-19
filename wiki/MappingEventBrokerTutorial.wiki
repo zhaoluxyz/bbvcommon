@@ -1,4 +1,4 @@
-#summary Shows the basic usage of the Distributed Event Broker
+#summary Shows the basic usage of the Mapping Event Broker
 
 == Setup of the distributed event broker ==
 The usage of the mapping event broker is astonishingly simple once you have setup your mapping technology. Basically it is only two lines of code.
