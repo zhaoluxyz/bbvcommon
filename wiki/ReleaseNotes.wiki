@@ -1,5 +1,11 @@
 #summary Release Notes.
 
+= 7.0.12089.2010 =
+
+== General ==
+  * updated all reference libraries
+  * updated NuGet package infos
+
 = 7.0.11331.1827 =
 
 == General ==
