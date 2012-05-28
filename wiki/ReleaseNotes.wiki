@@ -1,5 +1,11 @@
 #summary Release Notes.
 
+= 7.0.12149.1635 =
+
+== General == 
+  * updated all reference libraries
+  * Updated nuget command line tool
+
 = 7.0.12089.2010 =
 
 == General ==
