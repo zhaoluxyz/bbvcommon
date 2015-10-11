@@ -1,0 +1,3 @@
+The `UnitTestStateMachine` is a special version of the state machine that you can use in your unit tests to test a state machine definition.
+
+The unit test state machine is a passive state machine - to keep the unit tests single-threaded - that throws exceptions instead of firing events that an exception had occurred. This simplifies unit testing because an error will cause a failing test rather than just firing an event.
